@@ -11,7 +11,7 @@ export function ReservationSection() {
   const isExternalReservation = restaurantInfo.reservationUrl.startsWith("http");
   const t = translations[language].reservation;
   const fieldClass =
-    "h-13 w-full rounded-md border border-outline-variant bg-surface px-3.5 font-body-md text-base text-on-surface transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 md:h-auto md:px-4 md:py-3";
+    "h-13 min-w-0 w-full rounded-md border border-outline-variant bg-surface px-3.5 font-body-md text-base text-on-surface transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 md:h-auto md:px-4 md:py-3";
   const labelClass = "mb-2 block font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant md:text-label-sm";
 
   return (
@@ -23,8 +23,8 @@ export function ReservationSection() {
               {t.title}
             </h2>
             <form className="space-y-4 md:space-y-6">
-              <div className="grid grid-cols-2 gap-3 md:gap-6">
-                <div>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+                <div className="min-w-0">
                   <label className={labelClass} htmlFor="date">
                     {t.date}
                   </label>
@@ -34,7 +34,7 @@ export function ReservationSection() {
                     type="date"
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <label className={labelClass} htmlFor="time">
                     {t.time}
                   </label>
@@ -52,7 +52,7 @@ export function ReservationSection() {
               </div>
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-                <div>
+                <div className="min-w-0">
                   <label
                     className={labelClass}
                     htmlFor="guests"
@@ -69,7 +69,7 @@ export function ReservationSection() {
                     <option>{t.peoplePlus}</option>
                   </select>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <label className={labelClass} htmlFor="name">
                     {t.name}
                   </label>
