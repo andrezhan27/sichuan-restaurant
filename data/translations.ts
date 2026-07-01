@@ -156,6 +156,10 @@ const copy = {
       en: "Contact",
       pt: "Contacto",
     },
+    openMap: {
+      en: "Open map",
+      pt: "Abrir mapa",
+    },
     mapAlt: {
       en: "Map location",
       pt: "Localização no mapa",

@@ -3,7 +3,7 @@
 import { useLanguage } from "@/components/LanguageProvider";
 import { restaurantInfo } from "@/data/restaurant";
 import { localize, translations } from "@/data/translations";
-import { Clock, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { Clock, ExternalLink, MapPin, Phone, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 export function ReservationSection() {
@@ -13,6 +13,7 @@ export function ReservationSection() {
   const fieldClass =
     "h-13 min-w-0 w-full rounded-md border border-outline-variant bg-surface px-3.5 font-body-md text-base text-on-surface transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 md:h-auto md:px-4 md:py-3";
   const labelClass = "mb-2 block font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant md:text-label-sm";
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurantInfo.address)}`;
 
   return (
     <section className="scroll-mt-24 bg-surface-container-low py-12 md:scroll-mt-28 md:py-24" id="book">
@@ -97,7 +98,16 @@ export function ReservationSection() {
             <h2 className="mb-6 font-display-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">{t.visit}</h2>
             <div className="mb-8 space-y-6">
               <ContactItem icon={MapPin} title={t.address}>
-                {restaurantInfo.address}
+                <span className="block">{restaurantInfo.address}</span>
+                <a
+                  className="mt-3 inline-flex h-10 items-center gap-2 rounded-md border border-outline-variant px-3 font-label-sm text-label-sm uppercase tracking-wider text-primary transition-colors hover:border-primary hover:bg-primary-fixed/40"
+                  href={mapUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {t.openMap}
+                  <ExternalLink size={15} strokeWidth={1.9} />
+                </a>
               </ContactItem>
               <ContactItem icon={Clock} title={t.hours}>
                 {restaurantInfo.openingHours.map((hours) => (
@@ -137,7 +147,7 @@ function ContactItem({
       <Icon className="mt-1 text-primary" size={24} strokeWidth={1.8} />
       <div>
         <h4 className="mb-1 font-title-md text-on-surface">{title}</h4>
-        <p className="font-body-md text-on-surface-variant">{children}</p>
+        <div className="font-body-md text-on-surface-variant">{children}</div>
       </div>
     </div>
   );
