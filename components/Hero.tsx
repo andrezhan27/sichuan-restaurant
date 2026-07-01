@@ -5,6 +5,7 @@ import { heroImage } from "@/data/landing";
 import { restaurantInfo } from "@/data/restaurant";
 import { translations } from "@/data/translations";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function Hero() {
   const { language } = useLanguage();
@@ -17,9 +18,14 @@ export function Hero() {
       id="home"
     >
       <div className="absolute inset-0 h-full w-full">
-        <div
-          className="h-full w-full scale-105 bg-cover bg-center transition-transform duration-[20s] ease-out hover:scale-110"
-          style={{ backgroundImage: `url('${heroImage}')` }}
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="scale-105 object-cover transition-transform duration-[20s] ease-out hover:scale-110"
+          fill
+          priority
+          sizes="100vw"
+          src={heroImage}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
       </div>
@@ -29,7 +35,11 @@ export function Hero() {
           {restaurantInfo.heroTitle}
         </h1>
         <p className="mb-8 max-w-[20rem] font-title-md text-[15px] font-light leading-6 tracking-wide text-surface-variant opacity-90 sm:max-w-md sm:text-base md:mb-12 md:max-w-2xl md:text-title-md">
-          {t.tagline}
+          {t.taglineLines.map((line) => (
+            <span className="block" key={line}>
+              {line}
+            </span>
+          ))}
         </p>
         <a
           className="lantern-shadow group inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 font-label-sm text-[11px] uppercase tracking-[0.18em] text-on-primary transition-all duration-300 hover:bg-surface-bright hover:text-primary md:px-10 md:py-4 md:text-label-sm md:tracking-widest"

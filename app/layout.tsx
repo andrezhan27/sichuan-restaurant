@@ -3,16 +3,12 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Old House | Restaurante Chinês Premium em Lisboa",
+  title: "The Old House | Restaurante Chinês Premium em Lisboa | Premium Chinese Restaurant in Lisbon",
   description:
-<<<<<<< HEAD
-    "A premium Chinese restaurant in Lisbon celebrating traditional Sichuan craft, refined hospitality, and elegant dining.",
+    "Restaurante chinês premium em Lisboa dedicado à cozinha de Sichuan. Premium Chinese restaurant in Lisbon dedicated to Sichuan cuisine.",
   icons: {
     icon: "/brand/old-house-logo-square.svg",
   },
-=======
-    "Um restaurante chinês premium em Lisboa, dedicado à cozinha tradicional de Sichuan, hospitalidade cuidada e uma experiência elegante.",
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
 };
 
 export default function RootLayout({

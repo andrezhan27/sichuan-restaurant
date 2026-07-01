@@ -42,7 +42,6 @@ export function Footer() {
     <footer className="flat no shadows w-full border-t border-outline-variant bg-surface-container-highest py-10 dark:bg-surface-dim md:py-12">
       <div className="mx-auto grid max-w-container-max grid-cols-1 gap-10 px-margin-mobile md:grid-cols-[minmax(260px,1fr)_minmax(0,2.4fr)] md:px-margin-desktop">
         <div className="flex min-h-36 flex-col justify-between gap-8">
-<<<<<<< HEAD
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <Image
@@ -57,12 +56,7 @@ export function Footer() {
                 {restaurantInfo.name}
               </span>
             </div>
-            <p className="max-w-xs font-title-md text-sm text-on-surface-variant">{restaurantInfo.address}</p>
-=======
-          <div className="flex flex-col gap-3">
-            <span className="font-display-lg text-headline-lg-mobile tracking-tight text-primary">{restaurantInfo.name}</span>
             <p className="max-w-xs font-title-md text-sm text-on-surface-variant">{t.tagline}</p>
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
           </div>
 
           <FooterCredit className="hidden md:block" designedBy={t.designedBy} rights={t.rights} />

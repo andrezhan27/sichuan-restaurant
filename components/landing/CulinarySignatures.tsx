@@ -1,15 +1,16 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
 import { useLanguage } from "@/components/LanguageProvider";
 import { dishes } from "@/data/landing";
-import { translations } from "@/data/translations";
+import { localize, translations } from "@/data/translations";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function CulinarySignatures() {
   const { language } = useLanguage();
   const t = translations[language].menu;
+  const feature = dishes.find((dish) => dish.featured) ?? dishes[0];
+  const standardDishes = dishes.filter((dish) => dish !== feature);
 
   return (
     <section className="bg-surface py-16 md:py-24" id="menu">
@@ -31,44 +32,51 @@ export function CulinarySignatures() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-<<<<<<< HEAD
           <div className="bento-hover lantern-shadow relative col-span-1 h-[400px] cursor-pointer overflow-hidden rounded-[1rem] md:col-span-2 md:h-[600px] lg:col-span-2 lg:row-span-2">
-            <img alt={feature.alt} className="h-full w-full object-cover transition-transform duration-700" src={feature.src} />
+            <Image
+              alt={localize(feature.alt, language)}
+              className="object-cover transition-transform duration-700"
+              fill
+              sizes="(min-width: 1024px) 66vw, (min-width: 768px) 100vw, 100vw"
+              src={feature.src}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             <div className="absolute bottom-0 left-0 flex w-full items-end justify-between p-8">
               <div>
-                <h3 className="mb-2 font-display-lg text-headline-lg text-white">{feature.title}</h3>
+                <h3 className="mb-2 font-display-lg text-headline-lg text-white">{localize(feature.title, language)}</h3>
               </div>
-              <div className="text-right">
-                <span className="mb-2 block font-title-md text-white">{feature.price}</span>
-              </div>
+
             </div>
           </div>
 
           {standardDishes.map((dish) => (
-=======
-          {dishes.map((dish) => (
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
             <div
               className="bento-hover lantern-shadow relative h-[280px] cursor-pointer overflow-hidden rounded-[1rem]"
-              key={dish.title}
+              key={dish.src}
             >
-              <img alt={dish.alt} className="h-full w-full object-cover transition-transform duration-700" src={dish.src} />
+              <Image
+                alt={localize(dish.alt, language)}
+                className="object-cover transition-transform duration-700"
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                src={dish.src}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-<<<<<<< HEAD
               <div className="absolute bottom-0 left-0 flex w-full items-end justify-between p-6">
                 <div>
-                  <h3 className="mb-1 font-title-md text-white">{dish.title}</h3>
-                  <span className="font-body-md text-white/90">{dish.price}</span>
+                  <h3 className="mb-1 font-title-md text-white">{localize(dish.title, language)}</h3>
                 </div>
-=======
-              <div className="absolute bottom-0 left-0 w-full p-6">
-                <h3 className="mb-1 font-title-md text-white">{dish.title}</h3>
-                <span className="font-body-md text-white/90">{dish.price}</span>
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
               </div>
             </div>
           ))}
+
+          <a
+            className="group flex items-center justify-center gap-2 font-headline-lg text-xl italic font-normal tracking-wide text-on-surface-variant transition-colors duration-200 hover:text-primary"
+            href="/menu"
+          >
+            {t.cta}
+            <ArrowRight className="transition-transform duration-200 group-hover:translate-x-1" size={18} strokeWidth={1.8} />
+          </a>
         </div>
       </div>
     </section>

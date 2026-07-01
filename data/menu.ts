@@ -1,269 +1,388 @@
+import type { LocalizedText } from "@/data/translations";
+
 export type MenuImage = {
-  alt: string;
-  category?: string;
-  price?: string;
+  alt: LocalizedText;
   src: string;
-  title?: string;
+  title?: LocalizedText;
 };
 
 export const menuLandingImages: MenuImage[] = [
   {
-    alt: "The Old House signature dish",
-    src: "/menu-landing/DSC08652%20copiar.webp",
+    alt: {
+      en: "The Old House signature dish",
+      pt: "Prato de assinatura do The Old House",
+    },
+    src: "/menu-landing/signature-dish.webp",
   },
   {
-    alt: "The Old House Sichuan dish",
-    src: "/menu-landing/DSC08542%20copiar.webp",
+    alt: {
+      en: "The Old House Sichuan dish",
+      pt: "Prato de Sichuan do The Old House",
+    },
+    src: "/menu-landing/sichuan-dish.webp",
   },
   {
-    alt: "The Old House plated specialty",
-    src: "/menu-landing/DSC08637%20copiar.webp",
+    alt: {
+      en: "The Old House plated specialty",
+      pt: "Especialidade empratada do The Old House",
+    },
+    src: "/menu-landing/plated-specialty.webp",
   },
   {
-    alt: "The Old House chef selection",
-    src: "/menu-landing/DSC08270%20copiar.webp",
+    alt: {
+      en: "The Old House chef selection",
+      pt: "Seleção do chef do The Old House",
+    },
+    src: "/menu-landing/chef-selection.webp",
   },
   {
-    alt: "The Old House seafood dish",
-    src: "/menu-landing/DSC08961%20copiar.webp",
+    alt: {
+      en: "The Old House seafood dish",
+      pt: "Prato de marisco do The Old House",
+    },
+    src: "/menu-landing/seafood-dish.webp",
   },
   {
-    alt: "The Old House dim sum dish",
-    src: "/menu-landing/DSC08805%20copiar.webp",
+    alt: {
+      en: "The Old House dim sum dish",
+      pt: "Prato de dim sum do The Old House",
+    },
+    src: "/menu-landing/dim-sum-dish.webp",
   },
   {
-    alt: "The Old House Sichuan chicken dish",
-    src: "/menu-landing/DSC08850%20copiar.webp",
+    alt: {
+      en: "The Old House Sichuan chicken dish",
+      pt: "Prato de frango de Sichuan do The Old House",
+    },
+    src: "/menu-landing/sichuan-chicken.webp",
   },
   {
-    alt: "The Old House hot pot dish",
-    src: "/menu-landing/DSC08722%20copiar.webp",
+    alt: {
+      en: "The Old House hot pot dish",
+      pt: "Prato hot pot do The Old House",
+    },
+    src: "/menu-landing/hot-pot-dish.webp",
   },
 ];
 
 export const menuImages: MenuImage[] = [
   {
-    alt: "Crisp golden starter served with dipping sauce",
-    category: "Starters",
-    price: "€25.70",
-    src: "/menu/DSC05069%20copiar.webp",
-    title: "Tea Duck",
+    alt: {
+      en: "Crisp golden starter served with dipping sauce",
+      pt: "Entrada dourada e crocante servida com molho",
+    },
+    src: "/menu/roasted-black-pork.webp",
+    title: {
+      en: "Roasted Black Pork",
+      pt: "Porco Preto na Chapa",
+    },
   },
   {
-    alt: "Sichuan cold appetizer with chili oil",
-    category: "Hot Pot",
-    price: "€80.60",
-    src: "/menu/DSC05103%20copiar.webp",
-    title: "Old House Hot Pot",
+    alt: {
+      en: "Sichuan cold appetizer with chili oil",
+      pt: "Entrada fria de Sichuan com óleo de malagueta",
+    },
+    src: "/menu/old-house-hot-pot.webp",
+    title: {
+      en: "Sauteed Crab in Hot and Spicy Sauce",
+      pt: "Spateira salteada em Molho Picante",
+    },
   },
   {
-    alt: "Delicate Old House appetizer plate",
-    category: "Seafood",
-    price: "€36.80",
-    src: "/menu/DSC05131%20copiar.webp",
-    title: "Fish with Pickled Mustard Greens",
+    alt: {
+      en: "Delicate Old House appetizer plate",
+      pt: "Prato delicado de entrada do Old House",
+    },
+    src: "/menu/fish-pickled-mustard-greens.webp",
+    title: {
+      en: "Spicy Cuttlefish",
+      pt: "Choco com Malagueta",
+    },
   },
   {
-    alt: "Sichuan starter with herbs and sauce",
-    category: "Hot Dishes",
-    price: "€25.20",
-    src: "/menu/DSC05156%20copiar.webp",
-    title: "Pepper Beef",
+    alt: {
+      en: "Premium Sichuan dish served on a dark plate",
+      pt: "Prato premium de Sichuan servido em prato escuro",
+    },
+    src: "/menu/steamed-scallop.webp",
+    title: {
+      en: "Steamed Shimp Ball",
+      pt: "Gambas a Vapor com Noodles Translúcido",
+    },
   },
   {
-    alt: "Signature plated Sichuan dish",
-    category: "Rice & Noodles",
-    price: "€10.00",
-    src: "/menu/DSC05178%20copiar.webp",
-    title: "Old House Fried Rice",
+    alt: {
+      en: "Old House plated dish with rich sauce",
+      pt: "Prato do Old House com molho intenso",
+    },
+    src: "/menu/dan-dan-noodles.webp",
+    title: {
+      en: "Noodles Sichuan Style",
+      pt: "Noodles ao Estilo de Sichuan/sem picante",
+    },
   },
   {
-    alt: "Premium Sichuan dish served on a dark plate",
-    category: "Seafood",
-    price: "€10.50",
-    src: "/menu/DSC08270%20copiar.webp",
-    title: "Steamed Scallop",
+    alt: {
+      en: "Sichuan hot dish with vegetables",
+      pt: "Prato quente de Sichuan com legumes",
+    },
+    src: "/menu/chinese-bun-omelet.webp",
+    title: {
+      en: "Nuts Bread",
+      pt: "Pãozinho com Nozes",
+    },
   },
   {
-    alt: "Elegant seafood dish from The Old House",
-    category: "Seafood",
-    price: "€69.80",
-    src: "/menu/DSC08300%20copiar.webp",
-    title: "Steamed Fish with Chopped Pepper",
+    alt: {
+      en: "Chinese specialty served with chili oil",
+      pt: "Especialidade chinesa servida com óleo de malagueta",
+    },
+    src: "/menu/old-house-roll.webp",
+    title: {
+      en: "Chinese Pancake",
+      pt: "Panqueca Fina Chinesa",
+    },
   },
   {
-    alt: "Old House plated dish with rich sauce",
-    category: "Rice & Noodles",
-    price: "€12.60",
-    src: "/menu/DSC08542%20copiar.webp",
-    title: "Dan Dan Noodles",
+    alt: {
+      en: "Old House meat dish with Sichuan seasoning",
+      pt: "Prato de carne do Old House com tempero de Sichuan",
+    },
+    src: "/menu/xiaolong-bao.webp",
+    title: {
+      en: "Lao Fang Zi Xiao Long Bao",
+      pt: "Lao Fang Zi Xiao Long Bao",
+    },
   },
   {
-    alt: "Sichuan hot dish with vegetables",
-    category: "Dim Sum",
-    price: "€10.50",
-    src: "/menu/DSC08545%20copiar.webp",
-    title: "Chinese Bun in Omelet",
+    alt: {
+      en: "House poultry dish with peppers",
+      pt: "Prato de aves da casa com pimentos",
+    },
+    src: "/menu/wonton.webp",
+    title: {
+      en: "The Old House Wonton",
+      pt: "Wonton te Old House com/sem picante",
+    },
   },
   {
-    alt: "Chinese specialty served with chili oil",
-    category: "Dim Sum",
-    price: "€9.30",
-    src: "/menu/DSC08562%20copiar.webp",
-    title: "Old House Roll",
+    alt: {
+      en: "Dry pot dish in a metal serving pan",
+      pt: "Prato dry pot servido em recipiente metálico",
+    },
+    src: "/menu/signature-chicken.webp",
+    title: {
+      en: "Chicken with Sweet and Sour Sauce",
+      pt: "Frango Agridoce",
+    },
   },
   {
-    alt: "Old House meat dish with Sichuan seasoning",
-    category: "Dim Sum",
-    price: "€9.30",
-    src: "/menu/DSC08564%20copiar.webp",
-    title: "Lao Fan Zi Xiaolong Bao",
+    alt: {
+      en: "Dry pot specialty served in a silver pan",
+      pt: "Especialidade dry pot servida em recipiente prateado",
+    },
+    src: "/menu/sliced-pork-garlic-sauce.webp",
+    title: {
+      en: "Signature Chicken",
+      pt: "Frango the Old House",
+    },
+  },
+  // {
+  //   alt: {
+  //     en: "Sichuan dish with bright chili garnish",
+  //     pt: "Prato de Sichuan com guarnição de malagueta",
+  //   },
+  //   src: "/menu/dry-beef.webp",
+  //   title: {
+  //     en: "Dry Beef",
+  //     pt: "Vaca Seca",
+  //   },
+  // },
+  {
+    alt: {
+      en: "Spicy seafood dish served in a metal pan",
+      pt: "Prato picante de marisco servido em recipiente metálico",
+    },
+    src: "/menu/dry-pot-cauliflower.webp",
+    title: {
+      en: "Special Noodles with Seafood (or Beef/Chicken/Pork)",
+      pt: "Noodles Salteada com Marisco (ou Vaca/Frango/Porco)",
+    },
   },
   {
-    alt: "House poultry dish with peppers",
-    category: "Dim Sum",
-    price: "€5.60",
-    src: "/menu/DSC08566%20copiar.webp",
-    title: "The Old House Wonton",
+    alt: {
+      en: "Rich soup dish with Sichuan aromatics",
+      pt: "Sopa rica com aromas de Sichuan",
+    },
+    src: "/menu/kung-fu-soup.webp",
+    title: {
+      en: "Hot and Sour Soup",
+      pt: "Sopa Àcida Picante",
+    },
   },
   {
-    alt: "Dry pot dish in a metal serving pan",
-    category: "Cold Plates",
-    price: "€25.10",
-    src: "/menu/DSC08637%20copiar.webp",
-    title: "Signature Chicken",
+    alt: {
+      en: "Delicate dim sum selection",
+      pt: "Seleção delicada de dim sum",
+    },
+    src: "/menu/shredded-beef-old-fashioned.webp",
+    title: {
+      en: "Shredded Duck Casserole",
+      pt: "Pato Desfiado na Caçarola",
+    },
   },
   {
-    alt: "Dry pot specialty served in a silver pan",
-    category: "Cold Plates",
-    price: "€23.60",
-    src: "/menu/DSC08652%20copiar.webp",
-    title: "Sliced Boiled Pork with Garlic Sauce",
+    alt: {
+      en: "Hot pot dish from The Old House",
+      pt: "Prato hot pot do The Old House",
+    },
+    src: "/menu/tofu-hot-sauce.webp",
+    title: {
+      en: "Tofu in Hot Sauce",
+      pt: "Tofu em Molho Picante",
+    },
   },
   {
-    alt: "Sichuan dish with bright chili garnish",
-    category: "Cold Plates",
-    price: "€25.10",
-    src: "/menu/DSC08656%20copiar.webp",
-    title: "Dry Beef",
+    alt: {
+      en: "House noodle dish with toppings",
+      pt: "Prato de noodles da casa com guarnições",
+    },
+    src: "/menu/green-beans-pork.webp",
+    title: {
+      en: "Dry-Fried Green Beans with Pork",
+      pt: "Feijão Verde com Carne Picada",
+    },
   },
   {
-    alt: "Spicy seafood dish served in a metal pan",
-    category: "Hot Dishes",
-    price: "€23.10",
-    src: "/menu/DSC08678%20copiar.webp",
-    title: "Dry Pot Cauliflower",
+    alt: {
+      en: "Chef's noodle dish with Sichuan sauce",
+      pt: "Prato do chef com molho de Sichuan",
+    },
+    src: "/menu/eggplant-garlic-sauce.webp",
+    title: {
+      en: "Eggplant with Garlic Sauce",
+      pt: "Beringela com Molho de Alho",
+    },
   },
   {
-    alt: "Rich soup dish with Sichuan aromatics",
-    category: "Soups",
-    price: "€7.90",
-    src: "/menu/DSC08694%20copiar.webp",
-    title: "Kung Fu Soup",
+    alt: {
+      en: "Wok-fried rice or noodle specialty",
+      pt: "Especialidade de arroz ou noodles salteada no wok",
+    },
+    src: "/menu/noodles-soybean-paste.webp",
+    title: {
+      en: "Transparent Noodle with Minced Pork",
+      pt: "Noodles translúcidos com Carne de Porco Picada/ sem picante",
+    },
   },
   {
-    alt: "Delicate dim sum selection",
-    category: "Hot Dishes",
-    price: "€25.20",
-    src: "/menu/DSC08705%20copiar.webp",
-    title: "Shredded Beef Old-Fashioned Style",
+    alt: {
+      en: "Golden fried prawns with dark dipping sauce",
+      pt: "Gambas fritas douradas com molho escuro",
+    },
+    src: "/menu/sauteed-prawns.webp",
+    title: {
+      en: "Prawn with Tomato Sauce",
+      pt: "Gambas com Molho de Tomate",
+    },
   },
   {
-    alt: "Hot pot dish from The Old House",
-    category: "Hot Dishes",
-    price: "€23.10",
-    src: "/menu/DSC08722%20copiar.webp",
-    title: "Tofu in Hot Sauce",
+    alt: {
+      en: "Vegetable dish with Sichuan seasoning",
+      pt: "Prato de legumes com tempero de Sichuan",
+    },
+    src: "/menu/pepper-beef-2.webp",
+    title: {
+      en: "Beef with Mushroom",
+      pt: "Bife com Cogumelos",
+    },
   },
   {
-    alt: "House noodle dish with toppings",
-    category: "Vegetables",
-    price: "€18.80",
-    src: "/menu/DSC08765%20copiar.webp",
-    title: "Dry-Fried Green Beans with Pork",
+    alt: {
+      en: "Classic chicken dish with peppers and sauce",
+      pt: "Prato clássico de frango com pimentos e molho",
+    },
+    src: "/menu/beef-cumin.webp",
+    title: {
+      en: "Sliced Beef in Hot Chili Oil",
+      pt: "Bife com Molho Picante",
+    },
   },
   {
-    alt: "Chef's noodle dish with Sichuan sauce",
-    category: "Vegetables",
-    price: "€19.90",
-    src: "/menu/DSC08768%20copiar.webp",
-    title: "Eggplant with Garlic Sauce",
+    alt: {
+      en: "Seafood dish with fragrant sauce",
+      pt: "Prato de marisco com molho aromático",
+    },
+    src: "/menu/tea-duck-cold.webp",
+    title: {
+      en: "Sweet Duck",
+      pt: "Pato Delicioso",
+    },
   },
   {
-    alt: "Wok-fried rice or noodle specialty",
-    category: "Rice & Noodles",
-    price: "€12.60",
-    src: "/menu/DSC08792%20copiar.webp",
-    title: "Noodles with Soybean Paste",
+  //   alt: {
+  //     en: "Roasted or grilled meat specialty",
+  //     pt: "Especialidade de carne assada ou grelhada",
+  //   },
+  //   src: "/menu/sichuan-ribs.webp",
+  //   title: {
+  //     en: "Sichuan-Style Ribs",
+  //     pt: "Entrecosto à Sichuan",
+  //   },
+  // },
+  // {
+    alt: {
+      en: "Old House signature roasted dish",
+      pt: "Prato assado de assinatura do Old House",
+    },
+    src: "/menu/dry-beef-pepper.webp",
+    title: {
+      en: "Beef with Cumin",
+      pt: "Bife com Cominho",
+    },
   },
   {
-    alt: "Golden fried prawns with dark dipping sauce",
-    category: "Seafood",
-    price: "€35.30",
-    src: "/menu/DSC08805%20copiar.webp",
-    title: "Sautéed Prawns",
+    alt: {
+      en: "Seafood specialty with red chili and garnish",
+      pt: "Especialidade de marisco com malagueta vermelha e guarnição",
+    },
+    src: "/menu/steamed-fish-chili.webp",
+    title: {
+      en: "Sea Bass in Hot Chili Oil",
+      pt: "Robalo Cozido em Molho Picante",
+    },
+  },
+  // {
+  //   alt: {
+  //     en: "Elegant seafood dish on dark tableware",
+  //     pt: "Prato elegante de marisco em loiça escura",
+  //   },
+  //   src: "/menu/sweet-duck.webp",
+  //   title: {
+  //     en: "Sweet Duck",
+  //     pt: "Pato Doce",
+  //   },
+  // },
+  {
+    alt: {
+      en: "Sweet finishing dish from The Old House",
+      pt: "Prato final doce do The Old House",
+    },
+    src: "/menu/stir-fried-chineseyam.webp",
+    title: {
+      en: "Chinese Water Plant Salad",
+      pt: "Salada de Alga Chinesa",
+    },
   },
   {
-    alt: "Vegetable dish with Sichuan seasoning",
-    category: "Hot Dishes",
-    price: "€25.20",
-    src: "/menu/DSC08838%20copiar.webp",
-    title: "Pepper Beef",
-  },
-  {
-    alt: "Classic chicken dish with peppers and sauce",
-    category: "Hot Dishes",
-    price: "€25.70",
-    src: "/menu/DSC08850%20copiar.webp",
-    title: "Beef with Cumin",
-  },
-  {
-    alt: "Seafood dish with fragrant sauce",
-    category: "Cold Plates",
-    price: "€25.70",
-    src: "/menu/DSC08881%20copiar.webp",
-    title: "Tea Duck",
-  },
-  {
-    alt: "Roasted or grilled meat specialty",
-    category: "Hot Dishes",
-    price: "€25.70",
-    src: "/menu/DSC08884%20copiar.webp",
-    title: "Sichuan-Style Ribs",
-  },
-  {
-    alt: "Old House signature roasted dish",
-    category: "Cold Plates",
-    price: "€25.10",
-    src: "/menu/DSC08887%20copiar.webp",
-    title: "Dry Beef with Pepper",
-  },
-  {
-    alt: "Seafood specialty with red chili and garnish",
-    category: "Seafood",
-    price: "€69.80",
-    src: "/menu/DSC08961%20copiar.webp",
-    title: "Steamed Fish with Chili",
-  },
-  {
-    alt: "Elegant seafood dish on dark tableware",
-    category: "Cold Plates",
-    price: "€25.70",
-    src: "/menu/DSC08965%20copiar.webp",
-    title: "Sweet Duck",
-  },
-  {
-    alt: "Sweet finishing dish from The Old House",
-    category: "Vegetables",
-    price: "€18.80",
-    src: "/menu/DSC08995%20copiar.webp",
-    title: "Stir-Fried Chineseyam",
-  },
-  {
-    alt: "Final plated dessert or specialty dish",
-    category: "Rice & Noodles",
-    price: "€10.00",
-    src: "/menu/DSC09000%20copiar.webp",
-    title: "Old House Fried Rice",
+    alt: {
+      en: "Final plated dessert or specialty dish",
+      pt: "Sobremesa ou especialidade final empratada",
+    },
+    src: "/menu/old-house-fried-rice-2.webp",
+    title: {
+      en: "Soy Sauce Fried Rice",
+      pt: "Arroz com Molho de Soja",
+    },
   },
 ];

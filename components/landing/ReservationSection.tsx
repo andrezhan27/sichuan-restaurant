@@ -1,11 +1,8 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
 import { useLanguage } from "@/components/LanguageProvider";
-import { mapImage } from "@/data/landing";
 import { restaurantInfo } from "@/data/restaurant";
-import { translations } from "@/data/translations";
+import { localize, translations } from "@/data/translations";
 import { Clock, MapPin, Phone, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -101,8 +98,8 @@ export function ReservationSection() {
               </ContactItem>
               <ContactItem icon={Clock} title={t.hours}>
                 {restaurantInfo.openingHours.map((hours) => (
-                  <span className="block" key={hours}>
-                    {hours}
+                  <span className="block" key={hours.en}>
+                    {localize(hours, language)}
                   </span>
                 ))}
               </ContactItem>
@@ -116,10 +113,6 @@ export function ReservationSection() {
               </ContactItem>
             </div>
 
-            <div className="relative h-48 w-full overflow-hidden rounded-lg bg-surface-dim opacity-80 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0">
-              <img alt={t.mapAlt} className="h-full w-full object-cover" src={mapImage} />
-              <div className="pointer-events-none absolute inset-0 bg-primary/10 mix-blend-multiply" />
-            </div>
           </div>
         </div>
       </div>

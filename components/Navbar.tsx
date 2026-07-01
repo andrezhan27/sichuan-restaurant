@@ -8,27 +8,69 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navItems = [
-<<<<<<< HEAD
-  { href: "/", label: "Home" },
-  { href: "#menu", label: "Menu" },
-  { href: "#book", label: "Book a Table" },
-  { href: "#contacts", label: "Contacts" },
-];
-=======
-  { href: "#home", labelKey: "home" },
-  { href: "#menu", labelKey: "menu" },
-  { href: "#book", labelKey: "book" },
-  { href: "#contacts", labelKey: "contacts" },
+  { href: "/", labelKey: "home" },
+  { href: "/menu", labelKey: "menu" },
+  { href: "/#book", labelKey: "book" },
+  { href: "/#contacts", labelKey: "contacts" },
 ] as const;
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
+
+function NavItemLink({
+  children,
+  className,
+  href,
+  onClick,
+}: {
+  children: React.ReactNode;
+  className: string;
+  href: string;
+  onClick?: () => void;
+}) {
+  return href.startsWith("/") && !href.includes("#") ? (
+    <Link className={className} href={href} onClick={onClick}>
+      {children}
+    </Link>
+  ) : (
+    <a className={className} href={href} onClick={onClick}>
+      {children}
+    </a>
+  );
+}
 
 export function Navbar() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const pathname = usePathname();
   const t = translations[language].nav;
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const sectionIds = ["book", "contacts"];
+    const observers: IntersectionObserver[] = [];
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(`#${id}`); },
+        { threshold: 0.4 },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, [pathname]);
+
+  const effectiveActiveSection = pathname === "/" ? activeSection : null;
+
+  const isActive = (href: string) => {
+    if (href.startsWith("/#")) return effectiveActiveSection === href.slice(1);
+    if (href === "/") return pathname === "/" && !effectiveActiveSection;
+    return pathname === href;
+  };
 
   return (
     <nav
@@ -37,28 +79,10 @@ export function Navbar() {
     >
       <div className="relative mx-auto flex max-w-container-max items-center justify-center px-margin-mobile py-4 md:justify-between md:px-margin-desktop">
         <div className="hidden flex-1 items-center gap-8 font-title-md text-title-md md:flex">
-<<<<<<< HEAD
-          {navItems.slice(0, 2).map((item, index) => {
-            const className =
-              index === 0
-                ? "border-b-2 border-primary pb-1 text-primary transition-colors"
-                : "text-on-surface-variant transition-colors hover:text-primary";
-
-            return item.href === "/" ? (
-              <Link className={className} href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ) : (
-              <a className={className} href={item.href} key={item.href}>
-                {item.label}
-              </a>
-            );
-          })}
-=======
-          {navItems.slice(0, 2).map((item, index) => (
-            <a
+          {navItems.slice(0, 2).map((item) => (
+            <NavItemLink
               className={
-                index === 0
+                isActive(item.href)
                   ? "border-b-2 border-primary pb-1 text-primary transition-colors"
                   : "text-on-surface-variant transition-colors hover:text-primary"
               }
@@ -66,9 +90,8 @@ export function Navbar() {
               key={item.href}
             >
               {t[item.labelKey]}
-            </a>
+            </NavItemLink>
           ))}
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
         </div>
 
         <div className="pointer-events-none flex min-w-0 flex-shrink-0 justify-center px-12 text-center md:pointer-events-auto md:absolute md:left-1/2 md:px-0 md:-translate-x-1/2">
@@ -91,11 +114,19 @@ export function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden flex-1 items-center justify-end gap-7 font-title-md text-title-md md:flex">
+        <div className="hidden flex-1 translate-x-8 items-center justify-end gap-7 font-title-md text-title-md md:flex lg:translate-x-12">
           {navItems.slice(2).map((item) => (
-            <a className="text-on-surface-variant transition-colors hover:text-primary" href={item.href} key={item.href}>
+            <NavItemLink
+              className={
+                isActive(item.href)
+                  ? "border-b-2 border-primary pb-1 text-primary transition-colors"
+                  : "text-on-surface-variant transition-colors hover:text-primary"
+              }
+              href={item.href}
+              key={item.href}
+            >
               {t[item.labelKey]}
-            </a>
+            </NavItemLink>
           ))}
           <LanguageSwitcher />
         </div>
@@ -139,29 +170,16 @@ export function Navbar() {
                     open: { opacity: 1, x: 0, filter: "blur(0px)" },
                   }}
                 >
-<<<<<<< HEAD
-                  {item.href === "/" ? (
-                    <Link
-                      className="block rounded-lg px-4 py-3 font-title-md text-[17px] leading-6 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <a
-                      className="block rounded-lg px-4 py-3 font-title-md text-[17px] leading-6 text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary"
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  )}
+                  <NavItemLink
+                    className={`block rounded-lg px-4 py-3 font-title-md text-[17px] leading-6 transition-colors hover:bg-surface-container hover:text-primary ${
+                      isActive(item.href) ? "text-primary" : "text-on-surface-variant"
+                    }`}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t[item.labelKey]}
+                  </NavItemLink>
                 </motion.div>
-=======
-                  {t[item.labelKey]}
-                </motion.a>
->>>>>>> 08eecf72b994b078013a5a14e7d27dda3129de18
               ))}
               <motion.div
                 className="px-4 pb-3 pt-2"
