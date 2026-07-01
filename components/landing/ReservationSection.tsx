@@ -10,33 +10,36 @@ export function ReservationSection() {
   const { language } = useLanguage();
   const isExternalReservation = restaurantInfo.reservationUrl.startsWith("http");
   const t = translations[language].reservation;
+  const fieldClass =
+    "h-13 w-full rounded-md border border-outline-variant bg-surface px-3.5 font-body-md text-base text-on-surface transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 md:h-auto md:px-4 md:py-3";
+  const labelClass = "mb-2 block font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant md:text-label-sm";
 
   return (
-    <section className="bg-surface-container-low py-16 md:py-24" id="book">
+    <section className="scroll-mt-24 bg-surface-container-low py-12 md:scroll-mt-28 md:py-24" id="book">
       <div className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-24">
           <div>
-            <h2 className="mb-6 font-display-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
+            <h2 className="mb-5 font-display-lg text-headline-lg-mobile text-on-surface md:mb-6 md:text-headline-lg">
               {t.title}
             </h2>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <form className="space-y-4 md:space-y-6">
+              <div className="grid grid-cols-2 gap-3 md:gap-6">
                 <div>
-                  <label className="mb-2 block font-label-sm uppercase tracking-wider text-on-surface-variant" htmlFor="date">
+                  <label className={labelClass} htmlFor="date">
                     {t.date}
                   </label>
                   <input
-                    className="w-full rounded-md border border-outline-variant bg-surface px-4 py-3 font-body-md text-on-surface transition-colors focus:border-primary focus:ring-primary"
+                    className={fieldClass}
                     id="date"
                     type="date"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block font-label-sm uppercase tracking-wider text-on-surface-variant" htmlFor="time">
+                  <label className={labelClass} htmlFor="time">
                     {t.time}
                   </label>
                   <select
-                    className="w-full rounded-md border border-outline-variant bg-surface px-4 py-3 font-body-md text-on-surface transition-colors focus:border-primary focus:ring-primary"
+                    className={fieldClass}
                     id="time"
                   >
                     <option>19:00</option>
@@ -48,16 +51,16 @@ export function ReservationSection() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <label
-                    className="mb-2 block font-label-sm uppercase tracking-wider text-on-surface-variant"
+                    className={labelClass}
                     htmlFor="guests"
                   >
                     {t.guests}
                   </label>
                   <select
-                    className="w-full rounded-md border border-outline-variant bg-surface px-4 py-3 font-body-md text-on-surface transition-colors focus:border-primary focus:ring-primary"
+                    className={fieldClass}
                     id="guests"
                   >
                     <option>{`2 ${t.people}`}</option>
@@ -67,11 +70,11 @@ export function ReservationSection() {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-2 block font-label-sm uppercase tracking-wider text-on-surface-variant" htmlFor="name">
+                  <label className={labelClass} htmlFor="name">
                     {t.name}
                   </label>
                   <input
-                    className="w-full rounded-md border border-outline-variant bg-surface px-4 py-3 font-body-md text-on-surface transition-colors focus:border-primary focus:ring-primary"
+                    className={fieldClass}
                     id="name"
                     placeholder={t.namePlaceholder}
                     type="text"
@@ -80,7 +83,7 @@ export function ReservationSection() {
               </div>
 
               <a
-                className="mt-4 flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 font-label-sm text-label-sm uppercase tracking-widest text-on-primary shadow-sm transition-all hover:bg-primary-container hover:text-on-primary-container"
+                className="mt-2 flex h-13 w-full items-center justify-center rounded-md bg-primary px-5 font-label-sm text-label-sm uppercase tracking-widest text-on-primary shadow-sm transition-all hover:bg-primary-container hover:text-on-primary-container md:mt-4 md:h-auto md:rounded-full md:px-6 md:py-4"
                 href={restaurantInfo.reservationUrl}
                 rel={isExternalReservation ? "noreferrer" : undefined}
                 target={isExternalReservation ? "_blank" : undefined}

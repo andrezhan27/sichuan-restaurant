@@ -165,7 +165,7 @@ body {
 .marquee-track {
   display: flex;
   width: fit-content;
-  animation: marquee 250s linear infinite;
+  animation: marquee 150s linear infinite;
   will-change: transform;
 }
 

@@ -27,7 +27,7 @@ function NavItemLink({
   children: React.ReactNode;
   className: string;
   href: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   return href.startsWith("/") && !href.includes("#") ? (
     <Link className={className} href={href} onClick={onClick}>
@@ -73,12 +73,27 @@ export function Navbar() {
     return pathname === href;
   };
 
+  const handleNavClick =
+    (href: string): React.MouseEventHandler<HTMLAnchorElement> =>
+    (event) => {
+      setIsOpen(false);
+
+      if (!href.startsWith("/#") || pathname !== "/") return;
+
+      const target = document.getElementById(href.slice(2));
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", href);
+    };
+
   return (
     <nav
       className="fixed top-0 z-50 w-full border-b border-outline-variant/30 bg-surface/80 shadow-sm backdrop-blur-md transition-all duration-300"
       id="main-nav"
     >
-      <div className="relative mx-auto flex max-w-container-max items-center justify-center px-margin-mobile py-4 md:justify-between md:px-margin-desktop">
+      <div className="relative mx-auto flex h-[72px] max-w-container-max items-center justify-center md:h-auto md:justify-between md:px-margin-desktop md:py-4">
         <div className="hidden flex-1 items-center gap-8 font-title-md text-title-md md:flex">
           {navItems.slice(0, 2).map((item) => (
             <NavItemLink
@@ -89,15 +104,16 @@ export function Navbar() {
               }
               href={item.href}
               key={item.href}
+              onClick={handleNavClick(item.href)}
             >
               {t[item.labelKey]}
             </NavItemLink>
           ))}
         </div>
 
-        <div className="pointer-events-none flex min-w-0 flex-shrink-0 justify-center px-12 text-center md:pointer-events-auto md:absolute md:left-1/2 md:px-0 md:-translate-x-1/2">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 flex w-max max-w-[calc(100%-6.5rem)] -translate-x-1/2 -translate-y-1/2 justify-center text-center md:pointer-events-auto md:max-w-none">
           <Link
-            className="pointer-events-auto inline-flex min-w-0 items-center justify-center gap-2.5 text-primary transition-opacity hover:opacity-80 sm:gap-3"
+            className="pointer-events-auto inline-flex min-w-0 max-w-full items-center justify-center gap-2.5 text-primary transition-opacity hover:opacity-80 sm:gap-3"
             href="/"
             onClick={() => setIsOpen(false)}
           >
@@ -125,6 +141,7 @@ export function Navbar() {
               }
               href={item.href}
               key={item.href}
+              onClick={handleNavClick(item.href)}
             >
               {t[item.labelKey]}
             </NavItemLink>
@@ -176,7 +193,7 @@ export function Navbar() {
                       isActive(item.href) ? "text-primary" : "text-on-surface-variant"
                     }`}
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleNavClick(item.href)}
                   >
                     {t[item.labelKey]}
                   </NavItemLink>
