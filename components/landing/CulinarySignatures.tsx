@@ -43,7 +43,7 @@ export function CulinarySignatures() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             <div className="absolute bottom-0 left-0 flex w-full items-end justify-between p-8">
               <div>
-                <h3 className="mb-2 font-display-lg text-headline-lg text-white">{localize(feature.title, language)}</h3>
+                <h3 className="mb-1 font-title-md text-white">{localize(feature.title, language)}</h3>
               </div>
 
             </div>

@@ -49,24 +49,25 @@ export function Navbar() {
 
   useEffect(() => {
     if (pathname !== "/") return;
-    const sectionIds = ["book", "contacts"];
-    const observers: IntersectionObserver[] = [];
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(`#${id}`); },
-        { threshold: 0.4 },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => observers.forEach((o) => o.disconnect());
+
+    const contactSection = document.getElementById("book");
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setActiveSection(entry.isIntersecting ? "#contacts" : null);
+      },
+      { rootMargin: "-35% 0px -35% 0px", threshold: 0 },
+    );
+
+    observer.observe(contactSection);
+    return () => observer.disconnect();
   }, [pathname]);
 
   const effectiveActiveSection = pathname === "/" ? activeSection : null;
 
   const isActive = (href: string) => {
+    if (href === "/#book") return false;
     if (href.startsWith("/#")) return effectiveActiveSection === href.slice(1);
     if (href === "/") return pathname === "/" && !effectiveActiveSection;
     return pathname === href;

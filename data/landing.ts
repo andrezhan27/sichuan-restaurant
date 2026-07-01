@@ -54,17 +54,17 @@ export const ambienceTop: LandingImage[] = [
   },
   {
     alt: {
-      en: "The Old House kitchen detail",
-      pt: "Detalhe da cozinha do The Old House",
-    },
-    src: "/space/DSC07713%20copiar.webp",
-  },
-  {
-    alt: {
       en: "The Old House exterior terrace at night",
       pt: "Terraço exterior do The Old House à noite",
     },
     src: "/space/exterior-night-terrace.webp",
+  },
+  {
+    alt: {
+      en: "The Old House kitchen detail",
+      pt: "Detalhe da cozinha do The Old House",
+    },
+    src: "/space/DSC07713%20copiar.webp",
   },
   {
     alt: {
@@ -85,13 +85,6 @@ export const ambienceTop: LandingImage[] = [
 export const ambienceBottom: LandingImage[] = [
   {
     alt: {
-      en: "Dining room with set tables and warm lantern light",
-      pt: "Sala de jantar com mesas postas e luz quente de lanternas",
-    },
-    src: "/space/dining-room-set-tables.webp",
-  },
-  {
-    alt: {
       en: "Private dining room with round table and wall mural",
       pt: "Sala privada com mesa redonda e mural na parede",
     },
@@ -110,6 +103,13 @@ export const ambienceBottom: LandingImage[] = [
       pt: "Terraço exterior com mesas cobertas",
     },
     src: "/space/outdoor-terrace.webp",
+  },
+  {
+    alt: {
+      en: "Dining room with set tables and warm lantern light",
+      pt: "Sala de jantar com mesas postas e luz quente de lanternas",
+    },
+    src: "/space/dining-room-set-tables.webp",
   },
   {
     alt: {

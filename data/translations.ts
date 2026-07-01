@@ -41,7 +41,7 @@ const copy = {
     taglineLines: [
       {
         en: "Signature Chinese culinary excellence,",
-        pt: "Excelência culinária chinesa de assinatura,",
+        pt: "Excelência culinária Chinesa de assinatura,",
       },
       {
         en: "artfully curated in Lisbon.",
@@ -50,7 +50,7 @@ const copy = {
     ],
     tagline: {
       en: "Signature Chinese culinary excellence, artfully curated in Lisbon.",
-      pt: "Excelência culinária chinesa de assinatura, cuidadosamente criada em Lisboa.",
+      pt: "Excelência culinária Chinesa de assinatura, cuidadosamente criada em Lisboa.",
     },
     cta: {
       en: "Book Your Table",
@@ -64,7 +64,7 @@ const copy = {
     },
     intro: {
       en: "Step into a realm where minimalist elegance meets the rich textures of traditional Chinese artistry.",
-      pt: "Entre num ambiente onde a elegância minimalista encontra as texturas ricas da arte tradicional chinesa.",
+      pt: "Entre num ambiente onde a elegância minimalista encontra as texturas ricas da arte tradicional Chinesa.",
     },
   },
   menu: {
@@ -164,7 +164,7 @@ const copy = {
   footer: {
     tagline: {
       en: "Signature Chinese culinary excellence, artfully curated in Lisbon.",
-      pt: "Excelência culinária chinesa de assinatura, cuidadosamente criada em Lisboa.",
+      pt: "Excelência culinária Chinesa de assinatura, cuidadosamente criada em Lisboa.",
     },
     menu: {
       en: "Menu",
@@ -188,11 +188,11 @@ const copy = {
     },
     designedBy: {
       en: "Designed by",
-      pt: "Desenvolvido por",
+      pt: "Designed by",
     },
     rights: {
       en: "All rights reserved.",
-      pt: "Todos os direitos reservados.",
+      pt: "All rights reserved.",
     },
   },
 } as const satisfies Record<string, unknown>;
