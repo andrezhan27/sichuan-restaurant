@@ -111,7 +111,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-1/2 flex w-max max-w-[calc(100%-6.5rem)] -translate-x-1/2 -translate-y-1/2 justify-center text-center md:pointer-events-auto md:max-w-none">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 flex w-max max-w-[calc(100%-6.5rem)] -translate-x-[54%] -translate-y-1/2 justify-center text-center md:pointer-events-auto md:max-w-none">
           <Link
             className="pointer-events-auto inline-flex min-w-0 max-w-full items-center justify-center gap-2.5 text-primary transition-opacity hover:opacity-80 sm:gap-3"
             href="/"
