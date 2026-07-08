@@ -108,6 +108,10 @@ const copy = {
       en: "Reserve Your Table",
       pt: "Reserve a Sua Mesa",
     },
+    intro: {
+      en: "Choose your date, time, and party size through our secure online booking experience.",
+      pt: "Escolha a data, a hora e o número de pessoas através da nossa experiência de reserva online segura.",
+    },
     date: {
       en: "Date",
       pt: "Data",
@@ -129,8 +133,8 @@ const copy = {
       pt: "Nome completo",
     },
     confirm: {
-      en: "Confirm Reservation",
-      pt: "Confirmar Reserva",
+      en: "Book a Table",
+      pt: "Reservar Mesa",
     },
     people: {
       en: "People",

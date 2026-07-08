@@ -22,7 +22,10 @@ export const restaurantInfo = {
   ] satisfies LocalizedText[],
   phone: "+351 21 896 9075",
   email: "reservations@theoldhouse.pt",
-  reservationUrl: process.env.NEXT_PUBLIC_DIG_IN_RESERVATION_WIDGET_URL || "#book",
+  reservationUrl: "/reservation",
+  reservationWidgetUrl:
+    process.env.NEXT_PUBLIC_DIG_IN_RESERVATION_WIDGET_URL ||
+    "https://reserve.intelis.pt/theoldhouse",
   socials: [
     {
       label: "Instagram",

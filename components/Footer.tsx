@@ -5,6 +5,7 @@ import { restaurantInfo } from "@/data/restaurant";
 import { translations } from "@/data/translations";
 import { Facebook, Instagram, Music2, type LucideIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const socialIcons: Record<(typeof restaurantInfo.socials)[number]["label"], LucideIcon> = {
   Instagram,
@@ -99,10 +100,20 @@ export function Footer() {
 
 function FooterLink({ children, href }: { children: string; href: string }) {
   const isExternal = href.startsWith("http");
+  const className =
+    "font-label-sm text-label-sm uppercase tracking-[0.28em] text-on-surface-variant opacity-90 transition-colors hover:text-primary hover:opacity-100";
+
+  if (href.startsWith("/") && !isExternal) {
+    return (
+      <Link className={className} href={href}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <a
-      className="font-label-sm text-label-sm uppercase tracking-[0.28em] text-on-surface-variant opacity-90 transition-colors hover:text-primary hover:opacity-100"
+      className={className}
       href={href}
       rel={isExternal ? "noreferrer" : undefined}
       target={isExternal ? "_blank" : undefined}

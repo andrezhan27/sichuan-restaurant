@@ -6,10 +6,10 @@ import { restaurantInfo } from "@/data/restaurant";
 import { translations } from "@/data/translations";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   const { language } = useLanguage();
-  const isExternalReservation = restaurantInfo.reservationUrl.startsWith("http");
   const t = translations[language].hero;
 
   return (
@@ -41,15 +41,13 @@ export function Hero() {
             </span>
           ))}
         </p>
-        <a
+        <Link
           className="lantern-shadow group inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 font-label-sm text-[11px] uppercase tracking-[0.18em] text-on-primary transition-all duration-300 hover:bg-surface-bright hover:text-primary md:px-10 md:py-4 md:text-label-sm md:tracking-widest"
           href={restaurantInfo.reservationUrl}
-          rel={isExternalReservation ? "noreferrer" : undefined}
-          target={isExternalReservation ? "_blank" : undefined}
         >
           {t.cta}
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 md:h-[18px] md:w-[18px]" strokeWidth={2.2} />
-        </a>
+        </Link>
       </div>
     </header>
   );

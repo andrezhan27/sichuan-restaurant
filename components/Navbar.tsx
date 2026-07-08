@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { href: "/", labelKey: "home" },
   { href: "/menu", labelKey: "menu" },
-  { href: "/#book", labelKey: "book" },
+  { href: "/reservation", labelKey: "book" },
   { href: "/#contacts", labelKey: "contacts" },
 ] as const;
 
@@ -67,7 +67,6 @@ export function Navbar() {
   const effectiveActiveSection = pathname === "/" ? activeSection : null;
 
   const isActive = (href: string) => {
-    if (href === "/#book") return false;
     if (href.startsWith("/#")) return effectiveActiveSection === href.slice(1);
     if (href === "/") return pathname === "/" && !effectiveActiveSection;
     return pathname === href;
