@@ -15,7 +15,7 @@ export default function ReservationPage() {
       <main className="h-svh overflow-hidden bg-surface pt-[72px] md:pt-20">
         <iframe
           className="block h-full min-h-0 w-full border-0 bg-surface"
-          loading="lazy"
+          loading="eager"
           src={restaurantInfo.reservationWidgetUrl}
           title="The Old House reservation form"
         />
