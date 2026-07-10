@@ -82,7 +82,7 @@ export const menuImages: MenuImage[] = [
       en: "Sichuan cold appetizer with chili oil",
       pt: "Entrada fria de Sichuan com óleo de malagueta",
     },
-    src: "/menu/old-house-hot-pot.webp",
+    src: "/menu/sauteed-crab-in-hot-and-spicy-sauce.webp",
     title: {
       en: "Sauteed Crab in Hot and Spicy Sauce",
       pt: "Spateira salteada em Molho Picante",
@@ -93,7 +93,7 @@ export const menuImages: MenuImage[] = [
       en: "Delicate Old House appetizer plate",
       pt: "Prato delicado de entrada do Old House",
     },
-    src: "/menu/fish-pickled-mustard-greens.webp",
+    src: "/menu/spicy-cuttlefish.webp",
     title: {
       en: "Spicy Cuttlefish",
       pt: "Choco com Malagueta",
@@ -104,7 +104,7 @@ export const menuImages: MenuImage[] = [
       en: "Premium Sichuan dish served on a dark plate",
       pt: "Prato premium de Sichuan servido em prato escuro",
     },
-    src: "/menu/steamed-scallop.webp",
+    src: "/menu/steamed-shimp-ball.webp",
     title: {
       en: "Steamed Shimp Ball",
       pt: "Gambas a Vapor com Noodles Translúcido",
@@ -115,7 +115,7 @@ export const menuImages: MenuImage[] = [
       en: "Old House plated dish with rich sauce",
       pt: "Prato do Old House com molho intenso",
     },
-    src: "/menu/dan-dan-noodles.webp",
+    src: "/menu/noodles-sichuan-style.webp",
     title: {
       en: "Noodles Sichuan Style",
       pt: "Noodles ao Estilo de Sichuan/sem picante",
@@ -126,7 +126,7 @@ export const menuImages: MenuImage[] = [
       en: "Sichuan hot dish with vegetables",
       pt: "Prato quente de Sichuan com legumes",
     },
-    src: "/menu/chinese-bun-omelet.webp",
+    src: "/menu/nuts-bread.webp",
     title: {
       en: "Nuts Bread",
       pt: "Pãozinho com Nozes",
@@ -137,7 +137,7 @@ export const menuImages: MenuImage[] = [
       en: "Chinese specialty served with chili oil",
       pt: "Especialidade chinesa servida com óleo de malagueta",
     },
-    src: "/menu/old-house-roll.webp",
+    src: "/menu/chinese-pancake.webp",
     title: {
       en: "Chinese Pancake",
       pt: "Panqueca Fina Chinesa",
@@ -148,7 +148,7 @@ export const menuImages: MenuImage[] = [
       en: "Old House meat dish with Sichuan seasoning",
       pt: "Prato de carne do Old House com tempero de Sichuan",
     },
-    src: "/menu/xiaolong-bao.webp",
+    src: "/menu/lao-fang-zi-xiao-long-bao.webp",
     title: {
       en: "Lao Fang Zi Xiao Long Bao",
       pt: "Lao Fang Zi Xiao Long Bao",
@@ -159,7 +159,7 @@ export const menuImages: MenuImage[] = [
       en: "House poultry dish with peppers",
       pt: "Prato de aves da casa com pimentos",
     },
-    src: "/menu/wonton.webp",
+    src: "/menu/the-old-house-wonton.webp",
     title: {
       en: "The Old House Wonton",
       pt: "Wonton te Old House com/sem picante",
@@ -170,7 +170,7 @@ export const menuImages: MenuImage[] = [
       en: "Dry pot dish in a metal serving pan",
       pt: "Prato dry pot servido em recipiente metálico",
     },
-    src: "/menu/signature-chicken.webp",
+    src: "/menu/chicken-with-sweet-and-sour-sauce.webp",
     title: {
       en: "Chicken with Sweet and Sour Sauce",
       pt: "Frango Agridoce",
@@ -181,7 +181,7 @@ export const menuImages: MenuImage[] = [
       en: "Dry pot specialty served in a silver pan",
       pt: "Especialidade dry pot servida em recipiente prateado",
     },
-    src: "/menu/sliced-pork-garlic-sauce.webp",
+    src: "/menu/signature-chicken.webp",
     title: {
       en: "Signature Chicken",
       pt: "Frango the Old House",
@@ -203,7 +203,7 @@ export const menuImages: MenuImage[] = [
       en: "Spicy seafood dish served in a metal pan",
       pt: "Prato picante de marisco servido em recipiente metálico",
     },
-    src: "/menu/dry-pot-cauliflower.webp",
+    src: "/menu/special-noodles-with-seafood-or-beef-chicken-pork.webp",
     title: {
       en: "Special Noodles with Seafood (or Beef/Chicken/Pork)",
       pt: "Noodles Salteada com Marisco (ou Vaca/Frango/Porco)",
@@ -214,7 +214,7 @@ export const menuImages: MenuImage[] = [
       en: "Rich soup dish with Sichuan aromatics",
       pt: "Sopa rica com aromas de Sichuan",
     },
-    src: "/menu/kung-fu-soup.webp",
+    src: "/menu/hot-and-sour-soup.webp",
     title: {
       en: "Hot and Sour Soup",
       pt: "Sopa Àcida Picante",
@@ -225,7 +225,7 @@ export const menuImages: MenuImage[] = [
       en: "Delicate dim sum selection",
       pt: "Seleção delicada de dim sum",
     },
-    src: "/menu/shredded-beef-old-fashioned.webp",
+    src: "/menu/shredded-duck-casserole.webp",
     title: {
       en: "Shredded Duck Casserole",
       pt: "Pato Desfiado na Caçarola",
@@ -247,7 +247,7 @@ export const menuImages: MenuImage[] = [
       en: "House noodle dish with toppings",
       pt: "Prato de noodles da casa com guarnições",
     },
-    src: "/menu/green-beans-pork.webp",
+    src: "/menu/dry-fried-green-beans-with-pork.webp",
     title: {
       en: "Dry-Fried Green Beans with Pork",
       pt: "Feijão Verde com Carne Picada",
@@ -269,7 +269,7 @@ export const menuImages: MenuImage[] = [
       en: "Wok-fried rice or noodle specialty",
       pt: "Especialidade de arroz ou noodles salteada no wok",
     },
-    src: "/menu/noodles-soybean-paste.webp",
+    src: "/menu/transparent-noodle-with-minced-pork.webp",
     title: {
       en: "Transparent Noodle with Minced Pork",
       pt: "Noodles translúcidos com Carne de Porco Picada/ sem picante",
@@ -280,7 +280,7 @@ export const menuImages: MenuImage[] = [
       en: "Golden fried prawns with dark dipping sauce",
       pt: "Gambas fritas douradas com molho escuro",
     },
-    src: "/menu/sauteed-prawns.webp",
+    src: "/menu/prawn-with-tomato-sauce.webp",
     title: {
       en: "Prawn with Tomato Sauce",
       pt: "Gambas com Molho de Tomate",
@@ -291,7 +291,7 @@ export const menuImages: MenuImage[] = [
       en: "Vegetable dish with Sichuan seasoning",
       pt: "Prato de legumes com tempero de Sichuan",
     },
-    src: "/menu/pepper-beef-2.webp",
+    src: "/menu/beef-with-mushroom.webp",
     title: {
       en: "Beef with Mushroom",
       pt: "Bife com Cogumelos",
@@ -302,7 +302,7 @@ export const menuImages: MenuImage[] = [
       en: "Classic chicken dish with peppers and sauce",
       pt: "Prato clássico de frango com pimentos e molho",
     },
-    src: "/menu/beef-cumin.webp",
+    src: "/menu/sliced-beef-in-hot-chili-oil.webp",
     title: {
       en: "Sliced Beef in Hot Chili Oil",
       pt: "Bife com Molho Picante",
@@ -313,7 +313,7 @@ export const menuImages: MenuImage[] = [
       en: "Seafood dish with fragrant sauce",
       pt: "Prato de marisco com molho aromático",
     },
-    src: "/menu/tea-duck-cold.webp",
+    src: "/menu/sweet-duck-dish.webp",
     title: {
       en: "Sweet Duck",
       pt: "Pato Delicioso",
@@ -335,7 +335,7 @@ export const menuImages: MenuImage[] = [
       en: "Old House signature roasted dish",
       pt: "Prato assado de assinatura do Old House",
     },
-    src: "/menu/dry-beef-pepper.webp",
+    src: "/menu/beef-with-cumin.webp",
     title: {
       en: "Beef with Cumin",
       pt: "Bife com Cominho",
@@ -346,7 +346,7 @@ export const menuImages: MenuImage[] = [
       en: "Seafood specialty with red chili and garnish",
       pt: "Especialidade de marisco com malagueta vermelha e guarnição",
     },
-    src: "/menu/steamed-fish-chili.webp",
+    src: "/menu/sea-bass-in-hot-chili-oil.webp",
     title: {
       en: "Sea Bass in Hot Chili Oil",
       pt: "Robalo Cozido em Molho Picante",
@@ -368,7 +368,7 @@ export const menuImages: MenuImage[] = [
       en: "Sweet finishing dish from The Old House",
       pt: "Prato final doce do The Old House",
     },
-    src: "/menu/stir-fried-chineseyam.webp",
+    src: "/menu/chinese-water-plant-salad.webp",
     title: {
       en: "Chinese Water Plant Salad",
       pt: "Salada de Alga Chinesa",
@@ -379,7 +379,7 @@ export const menuImages: MenuImage[] = [
       en: "Final plated dessert or specialty dish",
       pt: "Sobremesa ou especialidade final empratada",
     },
-    src: "/menu/old-house-fried-rice-2.webp",
+    src: "/menu/soy-sauce-fried-rice.webp",
     title: {
       en: "Soy Sauce Fried Rice",
       pt: "Arroz com Molho de Soja",
