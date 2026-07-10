@@ -134,6 +134,17 @@ export const menuImages: MenuImage[] = [
   },
   {
     alt: {
+      en: "Steamed bread filled with chopped chicken",
+      pt: "Pão chinês recheado com frango picado",
+    },
+    src: "/menu/Steamed bread with chopped chicken.webp",
+    title: {
+      en: "Steamed bread with chopped chicken",
+      pt: "Pão Chinês recheado com frango picado",
+    },
+  },
+  {
+    alt: {
       en: "Chinese specialty served with chili oil",
       pt: "Especialidade chinesa servida com óleo de malagueta",
     },
