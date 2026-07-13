@@ -31,11 +31,11 @@ export function Footer() {
     },
     {
       label: t.privacy,
-      href: "#",
+      href: restaurantInfo.privacyPolicyUrl,
     },
     {
       label: t.complaints,
-      href: "#",
+      href: restaurantInfo.complaintsBookUrl,
     },
   ];
 

@@ -21,11 +21,13 @@ export const restaurantInfo = {
     },
   ] satisfies LocalizedText[],
   phone: "+351 21 896 9075",
-  email: "reservations@theoldhouse.pt",
+  email: "geral@theoldhouseportugal.pt",
   reservationUrl: "/reservation",
   reservationWidgetUrl:
     process.env.NEXT_PUBLIC_DIG_IN_RESERVATION_WIDGET_URL ||
     "https://reserve.intelis.pt/theoldhouse",
+  privacyPolicyUrl: process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL || "#",
+  complaintsBookUrl: "https://www.livroreclamacoes.pt/Inicio/",
   socials: [
     {
       label: "Instagram",
