@@ -31,7 +31,7 @@ export const restaurantInfo = {
   socials: [
     {
       label: "Instagram",
-      href: "https://www.instagram.com/thisoldhouse/",
+      href: "https://www.instagram.com/theoldhousept/",
     },
     {
       label: "TikTok",
