@@ -26,7 +26,6 @@ export const restaurantInfo = {
   reservationWidgetUrl:
     process.env.NEXT_PUBLIC_DIG_IN_RESERVATION_WIDGET_URL ||
     "https://reserve.intelis.pt/theoldhouse",
-  privacyPolicyUrl: process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL || "#",
   complaintsBookUrl: "https://www.livroreclamacoes.pt/Inicio/",
   socials: [
     {

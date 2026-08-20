@@ -1,4 +1,5 @@
 import { MenuPageClient } from "@/app/menu/MenuPageClient";
+import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function MenuPage() {
-  return <MenuPageClient />;
+  return (
+    <>
+      <MenuPageClient />
+      <Footer />
+    </>
+  );
 }

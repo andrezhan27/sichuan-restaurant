@@ -186,9 +186,21 @@ const copy = {
       en: "Book a Table",
       pt: "Reservar Mesa",
     },
-    privacy: {
-      en: "Privacy",
-      pt: "Privacidade",
+    navigation: {
+      en: "Footer navigation",
+      pt: "Navegação do rodapé",
+    },
+    legal: {
+      en: "Legal",
+      pt: "Legal",
+    },
+    privacyPolicy: {
+      en: "Privacy Policy",
+      pt: "Política de Privacidade",
+    },
+    termsAndConditions: {
+      en: "Terms and Conditions",
+      pt: "Termos e Condições",
     },
     complaints: {
       en: "Complaints Book",

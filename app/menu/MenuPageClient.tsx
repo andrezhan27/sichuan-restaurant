@@ -1,6 +1,5 @@
 "use client";
 
-import { Footer } from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Navbar } from "@/components/Navbar";
 import { type MenuImage, menuImages } from "@/data/menu";
@@ -60,7 +59,6 @@ export function MenuPageClient() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
