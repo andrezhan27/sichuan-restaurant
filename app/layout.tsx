@@ -8,7 +8,21 @@ export const metadata: Metadata = {
   description:
     "Restaurante chinês premium em Lisboa dedicado à cozinha de Sichuan. Premium Chinese restaurant in Lisbon dedicated to Sichuan cuisine.",
   icons: {
-    icon: "/brand/old-house-logo-square.svg",
+    icon: [
+      {
+        url: "/favicon-96x96.png",
+        type: "image/png",
+        sizes: "96x96",
+      },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
   },
 };
 
