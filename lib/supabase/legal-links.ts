@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { normalizeLegalLinks, type LegalLinks } from "@/lib/legal-links";
 import { unstable_cache } from "next/cache";
 
-const RESTAURANT_ID = "theoldhouse";
+const RESTAURANT_ID = process.env.SUPABASE_RESTAURANT_ID;
 const LEGAL_LINKS_REVALIDATE_SECONDS = 300;
 
 const emptyLegalLinks: LegalLinks = {
@@ -17,7 +17,7 @@ const fetchLegalLinks = unstable_cache(
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-    if (!supabaseUrl || !publishableKey) {
+    if (!supabaseUrl || !publishableKey || !RESTAURANT_ID) {
       return emptyLegalLinks;
     }
 
@@ -47,7 +47,7 @@ const fetchLegalLinks = unstable_cache(
       return emptyLegalLinks;
     }
   },
-  ["the-old-house-legal-links"],
+  ["sichuan-restaurant-legal-links", RESTAURANT_ID ?? "unconfigured"],
   { revalidate: LEGAL_LINKS_REVALIDATE_SECONDS },
 );
 

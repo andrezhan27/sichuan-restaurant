@@ -3,9 +3,9 @@ import { Footer } from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Menu | The Old House",
+  title: "Menu | Sichuan Restaurant",
   description:
-    "Menu bilingue do The Old House em Lisboa, com destaques de Sichuan. Bilingual The Old House menu in Lisbon with Sichuan highlights.",
+    "Menu bilingue do Sichuan Restaurant em Lisboa, com destaques de Sichuan. Bilingual Sichuan Restaurant menu in Lisbon with Sichuan highlights.",
 };
 
 export default function MenuPage() {

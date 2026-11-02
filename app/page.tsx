@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { AmbienceMarquee } from "@/components/landing/AmbienceMarquee";
 import { CulinarySignatures } from "@/components/landing/CulinarySignatures";
 import { ReservationSection } from "@/components/landing/ReservationSection";
+import { ReviewsSection } from "@/components/landing/ReviewsSection";
 import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <AmbienceMarquee />
         <CulinarySignatures />
+        <AmbienceMarquee />
         <ReservationSection />
+        <ReviewsSection />
       </main>
       <Footer />
     </>

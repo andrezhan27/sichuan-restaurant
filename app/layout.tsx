@@ -4,25 +4,12 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The Old House | Restaurante Chinês Premium em Lisboa | Premium Chinese Restaurant in Lisbon",
+  title: "Sichuan Restaurant 川渝印象 | Cozinha de Sichuan em Lisboa",
   description:
     "Restaurante chinês premium em Lisboa dedicado à cozinha de Sichuan. Premium Chinese restaurant in Lisbon dedicated to Sichuan cuisine.",
   icons: {
-    icon: [
-      {
-        url: "/favicon-96x96.png",
-        type: "image/png",
-        sizes: "96x96",
-      },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [
-      {
-        url: "/apple-touch-icon.png",
-        type: "image/png",
-        sizes: "180x180",
-      },
-    ],
+    icon: "/icon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 

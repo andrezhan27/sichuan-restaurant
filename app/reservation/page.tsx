@@ -1,25 +1,19 @@
 import { Navbar } from "@/components/Navbar";
-import { restaurantInfo } from "@/data/restaurant";
+import { Footer } from "@/components/Footer";
+import { ReservationPageClient } from "@/components/ReservationPageClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Reservations | The Old House",
+  title: "Reservas | Sichuan Restaurant",
   description:
-    "Reserve a table at The Old House in Lisbon. Reserve a sua mesa no The Old House em Lisboa.",
+    "Reserve a sua mesa no Sichuan Restaurant 川渝印象 em Lisboa. Table reservations by phone: +351 960 017 524.",
 };
-
 export default function ReservationPage() {
   return (
     <>
       <Navbar />
-      <main className="h-svh overflow-hidden bg-surface pt-[72px] md:pt-20">
-        <iframe
-          className="block h-full min-h-0 w-full border-0 bg-surface"
-          loading="eager"
-          src={restaurantInfo.reservationWidgetUrl}
-          title="The Old House reservation form"
-        />
-      </main>
+      <ReservationPageClient />
+      <Footer />
     </>
   );
 }

@@ -1,65 +1,52 @@
 "use client";
-
 import { useLanguage } from "@/components/LanguageProvider";
-import { ambienceBottom, ambienceTop } from "@/data/landing";
+import { ambienceImages } from "@/data/landing";
+import { restaurantInfo } from "@/data/restaurant";
 import { localize, translations } from "@/data/translations";
 import Image from "next/image";
 
-type AmbienceImage = (typeof ambienceTop)[number];
-
 export function AmbienceMarquee() {
   const { language } = useLanguage();
+  const pt = language === "pt";
   const t = translations[language].ambience;
-
   return (
-    <section className="relative overflow-hidden bg-background py-16 md:py-24">
-      <div className="mx-auto mb-12 max-w-container-max px-margin-mobile text-center md:px-margin-desktop">
-        <h2 className="mb-4 font-display-lg text-headline-lg-mobile text-on-surface md:text-headline-lg">
-          {t.title}
-        </h2>
-        <p className="mx-auto max-w-2xl font-body-lg text-body-lg text-on-surface-variant">
-          {t.intro}
-        </p>
+    <section className="section ambience" id="space">
+      <div className="container">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">02 / {pt ? "O NOSSO ESPAÇO" : "OUR SPACE"}</p>
+            <h2>{t.title}</h2>
+          </div>
+          <div className="section-heading-aside">
+            <p>{t.intro} {pt ? "Luz quente, boa companhia e uma mesa à sua espera." : "Warm light, good company and a table waiting for you."}</p>
+            <a className="text-link" href={restaurantInfo.phoneUrl}>{pt ? "Reservar mesa" : "Book a table"}</a>
+          </div>
+        </div>
       </div>
-
-      <div className="marquee-container relative flex w-full flex-col gap-4 overflow-hidden">
-        <MarqueeRow images={ambienceTop} language={language} />
-        <MarqueeRow images={ambienceBottom} language={language} reverse />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
-      </div>
-    </section>
-  );
-}
-
-function MarqueeRow({
-  images,
-  language,
-  reverse = false,
-}: {
-  images: readonly AmbienceImage[];
-  language: ReturnType<typeof useLanguage>["language"];
-  reverse?: boolean;
-}) {
-  return (
-    <div className={`marquee-track ${reverse ? "marquee-track-reverse" : ""}`}>
-      {[0, 1].map((beltIndex) => (
-        <div aria-hidden={beltIndex === 1} className="marquee-belt" key={beltIndex}>
-          {images.map((image) => (
-            <div
-              className="lantern-shadow relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-lg md:h-64 md:w-96"
-              key={`${image.src}-${beltIndex}`}
-            >
+      <div className="ambience-gallery">
+        <div className="ambience-mosaic">
+          {ambienceImages.map((photo, index) => (
+            <figure className={`mosaic-tile mosaic-tile-${index + 1}`} key={photo.src}>
               <Image
-                alt={beltIndex === 0 ? localize(image.alt, language) : ""}
-                className="object-cover"
+                src={photo.src}
+                alt={localize(photo.alt, language)}
                 fill
-                sizes="(min-width: 768px) 384px, 320px"
-                src={image.src}
+                loading="eager"
+                style={{ objectPosition: photo.objectPosition }}
+                sizes={[
+                  "(max-width: 600px) 100vw, (min-width: 1632px) 667px, 42vw",
+                  "(max-width: 600px) 50vw, (min-width: 1632px) 933px, 59vw",
+                  "(max-width: 600px) 50vw, (min-width: 1632px) 533px, 34vw",
+                  "(max-width: 600px) 100vw, (min-width: 1632px) 1067px, 67vw",
+                  "(max-width: 600px) 50vw, (min-width: 1632px) 933px, 59vw",
+                  "(max-width: 600px) 50vw, (min-width: 1632px) 667px, 42vw",
+                ][index]}
               />
-            </div>
+            </figure>
           ))}
         </div>
-      ))}
-    </div>
+        <p className="image-caption">SICHUAN RESTAURANT · AVENIDAS NOVAS, LISBOA</p>
+      </div>
+    </section>
   );
 }

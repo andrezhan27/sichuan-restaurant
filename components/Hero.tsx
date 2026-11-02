@@ -1,53 +1,53 @@
 "use client";
-
 import { useLanguage } from "@/components/LanguageProvider";
 import { heroImage } from "@/data/landing";
 import { restaurantInfo } from "@/data/restaurant";
-import { translations } from "@/data/translations";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export function Hero() {
   const { language } = useLanguage();
-  const t = translations[language].hero;
-
+  const pt = language === "pt";
   return (
-    <header
-      className="relative flex h-[84svh] min-h-[540px] w-full items-center justify-center overflow-hidden md:h-[90vh] md:min-h-[600px]"
-      id="home"
-    >
-      <div className="absolute inset-0 h-full w-full">
+    <header className="hero" id="home">
+      <div className="hero-photo">
+        {/* Account for the full width of the 4:3 image covering a portrait hero. */}
         <Image
-          alt=""
-          aria-hidden="true"
-          className="scale-105 object-cover transition-transform duration-[20s] ease-out hover:scale-110"
+          src={heroImage}
+          alt={
+            pt
+              ? "Escadaria do Sichuan Restaurant com murais coloridos, lanternas e letreiros de néon"
+              : "Sichuan Restaurant stairway with colourful murals, lanterns and neon signs"
+          }
           fill
           priority
-          sizes="100vw"
-          src={heroImage}
+          placeholder="blur"
+          sizes="(max-width: 600px) max(100vw, clamp(800px, 133.333svh, 987px)), 100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
+        <div className="hero-photo-shade" />
       </div>
-
-      <div className="relative z-10 mx-auto mt-10 flex w-full max-w-container-max -translate-y-3 flex-col items-center justify-center px-margin-mobile text-center md:mt-16 md:translate-y-0 md:px-margin-desktop">
-        <h1 className="mb-4 max-w-[18rem] font-display-lg text-[40px] leading-[46px] tracking-tight text-surface-bright drop-shadow-lg sm:max-w-none sm:text-5xl sm:leading-tight md:mb-6 md:text-[80px]">
-          {restaurantInfo.heroTitle}
-        </h1>
-        <p className="mb-8 max-w-[20rem] font-title-md text-[15px] font-light leading-6 tracking-wide text-surface-variant opacity-90 sm:max-w-md sm:text-base md:mb-12 md:max-w-2xl md:text-title-md">
-          {t.taglineLines.map((line) => (
-            <span className="block" key={line}>
-              {line}
-            </span>
-          ))}
-        </p>
-        <Link
-          className="lantern-shadow group inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 font-label-sm text-[11px] uppercase tracking-[0.18em] text-on-primary transition-all duration-300 hover:bg-surface-bright hover:text-primary md:px-10 md:py-4 md:text-label-sm md:tracking-widest"
-          href={restaurantInfo.reservationUrl}
-        >
-          {t.cta}
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 md:h-[18px] md:w-[18px]" strokeWidth={2.2} />
-        </Link>
+      <div className="hero-inner container">
+        <div className="hero-copy">
+          <h1>
+            SICHUAN <span className="hero-restaurant">Restaurant</span>{" "}
+            <span className="hero-chinese" lang="zh">川渝印象</span>
+          </h1>
+          <p className="hero-description">
+            {pt
+              ? "O calor da malagueta. O aroma da pimenta. Os sabores de Sichuan, à sua mesa em Lisboa."
+              : "The warmth of chilli. The fragrance of peppercorns. The flavours of Sichuan, at your table in Lisbon."}
+          </p>
+          <div className="hero-buttons">
+            <Link className="button button-outline" href="/menu">
+              {pt ? "Descobrir o menu" : "Discover the menu"}
+              <ArrowRight size={17} />
+            </Link>
+            <a className="button button-reserve" href={restaurantInfo.phoneUrl}>
+              {pt ? "Reservar mesa" : "Book a table"}
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   );

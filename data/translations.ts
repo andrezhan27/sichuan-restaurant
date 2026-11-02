@@ -40,17 +40,17 @@ const copy = {
   hero: {
     taglineLines: [
       {
-        en: "Signature Chinese culinary excellence,",
-        pt: "Excelência culinária Chinesa de assinatura,",
+        en: "The bold flavours of Sichuan,",
+        pt: "Os sabores intensos de Sichuan,",
       },
       {
-        en: "artfully curated in Lisbon.",
-        pt: "cuidadosamente criada em Lisboa.",
+        en: "shared at your table in Lisbon.",
+        pt: "à sua mesa em Lisboa.",
       },
     ],
     tagline: {
-      en: "Signature Chinese culinary excellence, artfully curated in Lisbon.",
-      pt: "Excelência culinária Chinesa de assinatura, cuidadosamente criada em Lisboa.",
+      en: "The bold flavours of Sichuan, shared at your table in Lisbon.",
+      pt: "Os sabores intensos de Sichuan, à sua mesa em Lisboa.",
     },
     cta: {
       en: "Book Your Table",
@@ -59,22 +59,22 @@ const copy = {
   },
   ambience: {
     title: {
-      en: "Our Space",
-      pt: "O Nosso Espaço",
+      en: "Stay a little longer.",
+      pt: "Sinta-se à mesa.",
     },
     intro: {
-      en: "Step into a realm where minimalist elegance meets the rich textures of traditional Chinese artistry.",
-      pt: "Entre num ambiente onde a elegância minimalista encontra as texturas ricas da arte tradicional Chinesa.",
+      en: "A little of Sichuan, in the heart of Lisbon.",
+      pt: "Um pouco de Sichuan, no coração de Lisboa.",
     },
   },
   menu: {
     title: {
-      en: "Our Signature Dishes",
-      pt: "Pratos de Assinatura",
+      en: "Our Specialties",
+      pt: "As nossas especialidades",
     },
     intro: {
-      en: "A curated journey through the bold and nuanced flavors of Sichuan.",
-      pt: "Uma viagem cuidada pelos sabores intensos e subtis de Sichuan.",
+      en: "Fragrant peppercorns, vibrant chillies and dishes best enjoyed together.",
+      pt: "Pimenta aromática, malaguetas vibrantes e pratos que sabem melhor partilhados.",
     },
     cta: {
       en: "Explore our menu",
@@ -87,16 +87,16 @@ const copy = {
       pt: "Menu",
     },
     intro: {
-      en: "A generous Sichuan menu from The Old House, moving from handmade dim sum and slow-built soups to wok-fired vegetables, seafood, hot dishes, and house signatures.",
-      pt: "Um menu generoso de Sichuan no The Old House, dos dim sum feitos à mão e sopas apuradas aos legumes no wok, mariscos, pratos quentes e assinaturas da casa.",
+      en: "Discover a selection of dishes photographed at Sichuan Restaurant. Ask our team for the current menu, prices and allergen information.",
+      pt: "Descubra uma seleção de pratos fotografados no Sichuan Restaurant. Consulte a nossa equipa para o menu atual, preços e informação sobre alergénios.",
     },
     backHome: {
       en: "Back to home",
       pt: "Voltar ao início",
     },
     fullMenu: {
-      en: "View Full Menu",
-      pt: "Ver Menu Completo",
+      en: "View menu photograph",
+      pt: "Ver fotografia do menu",
     },
     highlights: {
       en: "Menu Highlights",
@@ -105,12 +105,12 @@ const copy = {
   },
   reservation: {
     title: {
-      en: "Reserve Your Table",
-      pt: "Reserve a Sua Mesa",
+      en: "Good company. Great flavour.",
+      pt: "Boa companhia. Muito sabor.",
     },
     intro: {
-      en: "Choose your date, time, and party size through our secure online booking experience.",
-      pt: "Escolha a data, a hora e o número de pessoas através da nossa experiência de reserva online segura.",
+      en: "Bring your appetite. Call us to arrange your table and confirm availability.",
+      pt: "Traga o apetite. Ligue-nos para reservar a sua mesa e confirmar a disponibilidade.",
     },
     date: {
       en: "Date",
@@ -171,8 +171,8 @@ const copy = {
   },
   footer: {
     tagline: {
-      en: "Signature Chinese culinary excellence, artfully curated in Lisbon.",
-      pt: "Excelência culinária Chinesa de assinatura, cuidadosamente criada em Lisboa.",
+      en: "The bold flavours of Sichuan, shared at your table in Lisbon.",
+      pt: "Os sabores intensos de Sichuan, à sua mesa em Lisboa.",
     },
     menu: {
       en: "Menu",
@@ -212,7 +212,7 @@ const copy = {
     },
     rights: {
       en: "All rights reserved.",
-      pt: "All rights reserved.",
+      pt: "Todos os direitos reservados.",
     },
   },
 } as const satisfies Record<string, unknown>;
@@ -228,7 +228,10 @@ function localizeObject<T>(value: T, language: Language): Localized<T> {
 
   if (value && typeof value === "object") {
     return Object.fromEntries(
-      Object.entries(value).map(([key, child]) => [key, localizeObject(child, language)]),
+      Object.entries(value).map(([key, child]) => [
+        key,
+        localizeObject(child, language),
+      ]),
     ) as Localized<T>;
   }
 
@@ -238,11 +241,11 @@ function localizeObject<T>(value: T, language: Language): Localized<T> {
 function isLocalizedText(value: unknown): value is LocalizedText {
   return Boolean(
     value &&
-      typeof value === "object" &&
-      "en" in value &&
-      "pt" in value &&
-      typeof (value as LocalizedText).en === "string" &&
-      typeof (value as LocalizedText).pt === "string",
+    typeof value === "object" &&
+    "en" in value &&
+    "pt" in value &&
+    typeof (value as LocalizedText).en === "string" &&
+    typeof (value as LocalizedText).pt === "string",
   );
 }
 

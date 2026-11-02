@@ -1,48 +1,16 @@
 import type { LocalizedText } from "@/data/translations";
 
 export const restaurantInfo = {
-  name: "The Old House",
-  locationName: "The Old House Lisbon",
-  tagline: "Signature Chinese Culinary Excellence, Artfully Curated in Lisbon.",
-  heroTitle: "The Old House",
-  address: "R. da Pimenta 9, 1990-254 Lisboa, Portugal",
+  name: "Sichuan Restaurant",
+  chineseName: "川渝印象",
+  address: "Av. Visconde de Valmor 15A, 1000-290 Lisboa",
+  phone: "+351 960 017 524",
+  phoneUrl: "tel:+351960017524",
+  mapUrl: "https://maps.app.goo.gl/mgASs7hh9nhriLa99",
   openingHours: [
-    {
-      en: "Mon - Fri: 12:00 - 15:00 | 19:00 - 23:30",
-      pt: "Seg - Sex: 12:00 - 15:00 | 19:00 - 23:30",
-    },
-    {
-      en: "Sat: 12:30 - 23:00",
-      pt: "Sáb: 12:30 - 23:00",
-    },
-    {
-      en: "Sun: 12:30 - 22:30",
-      pt: "Dom: 12:30 - 22:30",
-    },
+    { en: "Lunch · 12:00 – 15:00", pt: "Almoço · 12:00 – 15:00" },
+    { en: "Dinner · 18:30 – 23:00", pt: "Jantar · 18:30 – 23:00" },
   ] satisfies LocalizedText[],
-  phone: "+351 21 896 9075",
-  email: "geral@theoldhouseportugal.pt",
-  reservationUrl: "/reservation",
-  reservationWidgetUrl:
-    process.env.NEXT_PUBLIC_DIG_IN_RESERVATION_WIDGET_URL ||
-    "https://reserve.intelis.pt/theoldhouse",
+  reservationUrl: "tel:+351960017524",
   complaintsBookUrl: "https://www.livroreclamacoes.pt/Inicio/",
-  socials: [
-    {
-      label: "Instagram",
-      href: "https://www.instagram.com/theoldhousept/",
-    },
-    {
-      label: "TikTok",
-      href: "https://www.tiktok.com/@the.old.house.res",
-    },
-    {
-      label: "Facebook",
-      href: "https://www.facebook.com/TheOldHousePortugal/",
-    },
-  ],
-  designer: {
-    label: "Intelis",
-    href: "https://intelis.pt/",
-  },
 } as const;

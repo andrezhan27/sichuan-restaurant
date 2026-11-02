@@ -3,397 +3,119 @@ import type { LocalizedText } from "@/data/translations";
 export type MenuImage = {
   alt: LocalizedText;
   src: string;
-  title?: LocalizedText;
+  title: LocalizedText;
+  description: LocalizedText;
 };
 
-export const menuLandingImages: MenuImage[] = [
-  {
-    alt: {
-      en: "The Old House signature dish",
-      pt: "Prato de assinatura do The Old House",
-    },
-    src: "/menu-landing/signature-dish.webp",
-  },
-  {
-    alt: {
-      en: "The Old House Sichuan dish",
-      pt: "Prato de Sichuan do The Old House",
-    },
-    src: "/menu-landing/sichuan-dish.webp",
-  },
-  {
-    alt: {
-      en: "The Old House plated specialty",
-      pt: "Especialidade empratada do The Old House",
-    },
-    src: "/menu-landing/plated-specialty.webp",
-  },
-  {
-    alt: {
-      en: "The Old House chef selection",
-      pt: "Seleção do chef do The Old House",
-    },
-    src: "/menu-landing/chef-selection.webp",
-  },
-  {
-    alt: {
-      en: "The Old House seafood dish",
-      pt: "Prato de marisco do The Old House",
-    },
-    src: "/menu-landing/seafood-dish.webp",
-  },
-  {
-    alt: {
-      en: "The Old House dim sum dish",
-      pt: "Prato de dim sum do The Old House",
-    },
-    src: "/menu-landing/dim-sum-dish.webp",
-  },
-  {
-    alt: {
-      en: "The Old House Sichuan chicken dish",
-      pt: "Prato de frango de Sichuan do The Old House",
-    },
-    src: "/menu-landing/sichuan-chicken.webp",
-  },
-  {
-    alt: {
-      en: "The Old House hot pot dish",
-      pt: "Prato hot pot do The Old House",
-    },
-    src: "/menu-landing/hot-pot-dish.webp",
-  },
-];
-
+// Menu images supplied by the user on 2026-11-02.
+// Original filenames are recorded in public/restaurant/SOURCES.md.
 export const menuImages: MenuImage[] = [
   {
+    src: "/restaurant/menu-sichuan-noodles.webp",
+    title: { en: "Sichuan noodles", pt: "Noodles de Sichuan" },
     alt: {
-      en: "Crisp golden starter served with dipping sauce",
-      pt: "Entrada dourada e crocante servida com molho",
+      en: "Noodles with minced meat, spring onion and chilli oil in a white bowl",
+      pt: "Noodles com carne picada, cebolinho e óleo de malagueta numa taça branca",
     },
-    src: "/menu/roasted-black-pork.webp",
-    title: {
-      en: "Roasted Black Pork",
-      pt: "Porco Preto na Chapa",
+    description: {
+      en: "A comforting bowl of noodles with minced meat, fresh greens and chilli oil.",
+      pt: "Uma taça reconfortante de noodles com carne picada, legumes frescos e óleo de malagueta.",
     },
   },
   {
+    src: "/restaurant/menu-chilli-beef.webp",
+    title: { en: "Sichuan chilli beef", pt: "Vaca com malagueta" },
     alt: {
-      en: "Sichuan cold appetizer with chili oil",
-      pt: "Entrada fria de Sichuan com óleo de malagueta",
+      en: "Sliced beef in red chilli broth with coriander in a blue-and-white bowl",
+      pt: "Vaca fatiada num caldo de malagueta com coentros numa taça azul e branca",
     },
-    src: "/menu/sauteed-crab-in-hot-and-spicy-sauce.webp",
-    title: {
-      en: "Sauteed Crab in Hot and Spicy Sauce",
-      pt: "Spateira salteada em Molho Picante",
+    description: {
+      en: "Sliced beef, dried chillies and fresh coriander in a rich red broth.",
+      pt: "Vaca fatiada, malaguetas secas e coentros frescos num caldo vermelho intenso.",
     },
   },
   {
+    src: "/restaurant/menu-chilli-fish.webp",
+    title: { en: "Fish with chilli oil", pt: "Peixe com óleo de malagueta" },
     alt: {
-      en: "Delicate Old House appetizer plate",
-      pt: "Prato delicado de entrada do Old House",
+      en: "Whole fish with red chillies and garlic, alongside fresh vegetables and tofu strips",
+      pt: "Peixe inteiro com malaguetas vermelhas e alho, acompanhado de legumes e tiras de tofu",
     },
-    src: "/menu/spicy-cuttlefish.webp",
-    title: {
-      en: "Spicy Cuttlefish",
-      pt: "Choco com Malagueta",
+    description: {
+      en: "Whole fish with chillies and garlic, served with a colourful selection of vegetables.",
+      pt: "Peixe inteiro com malaguetas e alho, acompanhado de uma seleção de legumes cheia de cor.",
     },
   },
   {
+    src: "/restaurant/menu-mapo-tofu.webp",
+    title: { en: "Mapo tofu", pt: "Tofu mapo" },
     alt: {
-      en: "Premium Sichuan dish served on a dark plate",
-      pt: "Prato premium de Sichuan servido em prato escuro",
+      en: "Mapo tofu in a red sauce topped with spring onion, with stir-fried dishes and rice",
+      pt: "Tofu mapo num molho vermelho com cebolinho, acompanhado de pratos salteados e arroz",
     },
-    src: "/menu/steamed-shimp-ball.webp",
-    title: {
-      en: "Steamed Shimp Ball",
-      pt: "Gambas a Vapor com Noodles Translúcido",
+    description: {
+      en: "Tofu in a rich, spicy sauce, finished with fresh spring onion.",
+      pt: "Tofu num molho intenso e picante, finalizado com cebolinho fresco.",
     },
   },
   {
+    src: "/restaurant/menu-crispy-dumplings.webp",
+    title: { en: "Pan-fried dumplings", pt: "Raviolis chineses crocantes" },
     alt: {
-      en: "Old House plated dish with rich sauce",
-      pt: "Prato do Old House com molho intenso",
+      en: "Golden pan-fried dumplings joined by a crisp lace skirt on a blue plate",
+      pt: "Raviolis chineses dourados unidos por uma fina camada crocante num prato azul",
     },
-    src: "/menu/noodles-sichuan-style.webp",
-    title: {
-      en: "Noodles Sichuan Style",
-      pt: "Noodles ao Estilo de Sichuan/sem picante",
+    description: {
+      en: "Golden dumplings with a delicate, crisp lace skirt.",
+      pt: "Raviolis dourados com uma fina e delicada camada crocante.",
     },
   },
   {
+    src: "/restaurant/menu-roast-duck.webp",
+    title: { en: "Roast duck", pt: "Pato assado" },
     alt: {
-      en: "Sichuan hot dish with vegetables",
-      pt: "Prato quente de Sichuan com legumes",
+      en: "Sliced roast duck with cucumber, spring onion, carrot and a sesame-topped dipping sauce",
+      pt: "Pato assado fatiado com pepino, cebolinho, cenoura e molho com sésamo",
     },
-    src: "/menu/nuts-bread.webp",
-    title: {
-      en: "Nuts Bread",
-      pt: "Pãozinho com Nozes",
+    description: {
+      en: "Crisp-skinned duck with fresh vegetables and a sesame-topped dipping sauce.",
+      pt: "Pato de pele crocante com legumes frescos e um molho com sésamo.",
     },
   },
   {
+    src: "/restaurant/menu-sesame-peas.webp",
+    title: { en: "Peas with chilli & sesame", pt: "Ervilhas com malagueta e sésamo" },
     alt: {
-      en: "Steamed bread filled with chopped chicken",
-      pt: "Pão chinês recheado com frango picado",
+      en: "Glossy green pea pods with dried chillies, garlic and sesame on a white plate",
+      pt: "Vagens de ervilhas com malaguetas secas, alho e sésamo num prato branco",
     },
-    src: "/menu/Steamed bread with chopped chicken.webp",
-    title: {
-      en: "Steamed bread with chopped chicken",
-      pt: "Pão Chinês recheado com frango picado",
+    description: {
+      en: "Green pea pods tossed with chillies, garlic and a scattering of sesame.",
+      pt: "Vagens de ervilhas salteadas com malaguetas, alho e um toque de sésamo.",
     },
   },
   {
+    src: "/restaurant/menu-scallion-pancakes.webp",
+    title: { en: "Scallion pancakes", pt: "Panquecas de cebolinho" },
     alt: {
-      en: "Chinese specialty served with chili oil",
-      pt: "Especialidade chinesa servida com óleo de malagueta",
+      en: "Golden scallion pancake wedges served in a woven bamboo tray",
+      pt: "Fatias douradas de panquecas de cebolinho servidas num tabuleiro de bambu",
     },
-    src: "/menu/chinese-pancake.webp",
-    title: {
-      en: "Chinese Pancake",
-      pt: "Panqueca Fina Chinesa",
+    description: {
+      en: "Golden, flaky pancakes served in a bamboo tray. Made for sharing.",
+      pt: "Panquecas douradas e estaladiças servidas em bambu. Feitas para partilhar.",
     },
   },
   {
+    src: "/restaurant/menu-sharing-feast.webp",
+    title: { en: "A table to share", pt: "Uma mesa para partilhar" },
     alt: {
-      en: "Old House meat dish with Sichuan seasoning",
-      pt: "Prato de carne do Old House com tempero de Sichuan",
+      en: "A shared table of stir-fried dishes, roast duck, rice and thin wraps in a bamboo steamer",
+      pt: "Uma mesa de pratos salteados, pato assado, arroz e crepes finos num cesto de bambu",
     },
-    src: "/menu/lao-fang-zi-xiao-long-bao.webp",
-    title: {
-      en: "Lao Fang Zi Xiao Long Bao",
-      pt: "Lao Fang Zi Xiao Long Bao",
-    },
-  },
-  {
-    alt: {
-      en: "House poultry dish with peppers",
-      pt: "Prato de aves da casa com pimentos",
-    },
-    src: "/menu/the-old-house-wonton.webp",
-    title: {
-      en: "The Old House Wonton",
-      pt: "Wonton te Old House com/sem picante",
-    },
-  },
-  {
-    alt: {
-      en: "Dry pot dish in a metal serving pan",
-      pt: "Prato dry pot servido em recipiente metálico",
-    },
-    src: "/menu/chicken-with-sweet-and-sour-sauce.webp",
-    title: {
-      en: "Chicken with Sweet and Sour Sauce",
-      pt: "Frango Agridoce",
-    },
-  },
-  {
-    alt: {
-      en: "Dry pot specialty served in a silver pan",
-      pt: "Especialidade dry pot servida em recipiente prateado",
-    },
-    src: "/menu/signature-chicken.webp",
-    title: {
-      en: "Signature Chicken",
-      pt: "Frango the Old House",
-    },
-  },
-  // {
-  //   alt: {
-  //     en: "Sichuan dish with bright chili garnish",
-  //     pt: "Prato de Sichuan com guarnição de malagueta",
-  //   },
-  //   src: "/menu/dry-beef.webp",
-  //   title: {
-  //     en: "Dry Beef",
-  //     pt: "Vaca Seca",
-  //   },
-  // },
-  {
-    alt: {
-      en: "Spicy seafood dish served in a metal pan",
-      pt: "Prato picante de marisco servido em recipiente metálico",
-    },
-    src: "/menu/special-noodles-with-seafood-or-beef-chicken-pork.webp",
-    title: {
-      en: "Special Noodles with Seafood (or Beef/Chicken/Pork)",
-      pt: "Noodles Salteada com Marisco (ou Vaca/Frango/Porco)",
-    },
-  },
-  {
-    alt: {
-      en: "Rich soup dish with Sichuan aromatics",
-      pt: "Sopa rica com aromas de Sichuan",
-    },
-    src: "/menu/hot-and-sour-soup.webp",
-    title: {
-      en: "Hot and Sour Soup",
-      pt: "Sopa Àcida Picante",
-    },
-  },
-  {
-    alt: {
-      en: "Delicate dim sum selection",
-      pt: "Seleção delicada de dim sum",
-    },
-    src: "/menu/shredded-duck-casserole.webp",
-    title: {
-      en: "Shredded Duck Casserole",
-      pt: "Pato Desfiado na Caçarola",
-    },
-  },
-  {
-    alt: {
-      en: "Hot pot dish from The Old House",
-      pt: "Prato hot pot do The Old House",
-    },
-    src: "/menu/tofu-hot-sauce.webp",
-    title: {
-      en: "Tofu in Hot Sauce",
-      pt: "Tofu em Molho Picante",
-    },
-  },
-  {
-    alt: {
-      en: "House noodle dish with toppings",
-      pt: "Prato de noodles da casa com guarnições",
-    },
-    src: "/menu/dry-fried-green-beans-with-pork.webp",
-    title: {
-      en: "Dry-Fried Green Beans with Pork",
-      pt: "Feijão Verde com Carne Picada",
-    },
-  },
-  {
-    alt: {
-      en: "Chef's noodle dish with Sichuan sauce",
-      pt: "Prato do chef com molho de Sichuan",
-    },
-    src: "/menu/eggplant-garlic-sauce.webp",
-    title: {
-      en: "Eggplant with Garlic Sauce",
-      pt: "Beringela com Molho de Alho",
-    },
-  },
-  {
-    alt: {
-      en: "Wok-fried rice or noodle specialty",
-      pt: "Especialidade de arroz ou noodles salteada no wok",
-    },
-    src: "/menu/transparent-noodle-with-minced-pork.webp",
-    title: {
-      en: "Transparent Noodle with Minced Pork",
-      pt: "Noodles translúcidos com Carne de Porco Picada/ sem picante",
-    },
-  },
-  {
-    alt: {
-      en: "Golden fried prawns with dark dipping sauce",
-      pt: "Gambas fritas douradas com molho escuro",
-    },
-    src: "/menu/prawn-with-tomato-sauce.webp",
-    title: {
-      en: "Prawn with Tomato Sauce",
-      pt: "Gambas com Molho de Tomate",
-    },
-  },
-  {
-    alt: {
-      en: "Vegetable dish with Sichuan seasoning",
-      pt: "Prato de legumes com tempero de Sichuan",
-    },
-    src: "/menu/beef-with-mushroom.webp",
-    title: {
-      en: "Beef with Mushroom",
-      pt: "Bife com Cogumelos",
-    },
-  },
-  {
-    alt: {
-      en: "Classic chicken dish with peppers and sauce",
-      pt: "Prato clássico de frango com pimentos e molho",
-    },
-    src: "/menu/sliced-beef-in-hot-chili-oil.webp",
-    title: {
-      en: "Sliced Beef in Hot Chili Oil",
-      pt: "Bife com Molho Picante",
-    },
-  },
-  {
-    alt: {
-      en: "Seafood dish with fragrant sauce",
-      pt: "Prato de marisco com molho aromático",
-    },
-    src: "/menu/sweet-duck-dish.webp",
-    title: {
-      en: "Sweet Duck",
-      pt: "Pato Delicioso",
-    },
-  },
-  {
-  //   alt: {
-  //     en: "Roasted or grilled meat specialty",
-  //     pt: "Especialidade de carne assada ou grelhada",
-  //   },
-  //   src: "/menu/sichuan-ribs.webp",
-  //   title: {
-  //     en: "Sichuan-Style Ribs",
-  //     pt: "Entrecosto à Sichuan",
-  //   },
-  // },
-  // {
-    alt: {
-      en: "Old House signature roasted dish",
-      pt: "Prato assado de assinatura do Old House",
-    },
-    src: "/menu/beef-with-cumin.webp",
-    title: {
-      en: "Beef with Cumin",
-      pt: "Bife com Cominho",
-    },
-  },
-  {
-    alt: {
-      en: "Seafood specialty with red chili and garnish",
-      pt: "Especialidade de marisco com malagueta vermelha e guarnição",
-    },
-    src: "/menu/sea-bass-in-hot-chili-oil.webp",
-    title: {
-      en: "Sea Bass in Hot Chili Oil",
-      pt: "Robalo Cozido em Molho Picante",
-    },
-  },
-  // {
-  //   alt: {
-  //     en: "Elegant seafood dish on dark tableware",
-  //     pt: "Prato elegante de marisco em loiça escura",
-  //   },
-  //   src: "/menu/sweet-duck.webp",
-  //   title: {
-  //     en: "Sweet Duck",
-  //     pt: "Pato Doce",
-  //   },
-  // },
-  {
-    alt: {
-      en: "Sweet finishing dish from The Old House",
-      pt: "Prato final doce do The Old House",
-    },
-    src: "/menu/chinese-water-plant-salad.webp",
-    title: {
-      en: "Chinese Water Plant Salad",
-      pt: "Salada de Alga Chinesa",
-    },
-  },
-  {
-    alt: {
-      en: "Final plated dessert or specialty dish",
-      pt: "Sobremesa ou especialidade final empratada",
-    },
-    src: "/menu/soy-sauce-fried-rice.webp",
-    title: {
-      en: "Soy Sauce Fried Rice",
-      pt: "Arroz com Molho de Soja",
+    description: {
+      en: "Stir-fried dishes, roast duck and delicate wraps, best enjoyed together.",
+      pt: "Pratos salteados, pato assado e crepes delicados que sabem melhor partilhados.",
     },
   },
 ];
