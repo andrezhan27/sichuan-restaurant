@@ -1,30 +1,33 @@
 "use client";
 import { useLanguage } from "@/components/LanguageProvider";
-import { heroImage } from "@/data/landing";
+import { heroImage, heroMobileImage } from "@/data/landing";
 import { restaurantInfo } from "@/data/restaurant";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 
 export function Hero() {
   const { language } = useLanguage();
   const pt = language === "pt";
+  const imageProps = {
+    alt: pt
+      ? "Uma mesa de especialidades de Sichuan com carne com malagueta, tofu mapo, noodles, raviolis e pato assado"
+      : "A spread of Sichuan specialities with chilli beef, mapo tofu, noodles, dumplings and roast duck",
+    fill: true,
+    sizes: "100vw",
+    style: { objectPosition: "center" },
+    loading: "eager" as const,
+    fetchPriority: "high" as const,
+  };
+  const { props: desktop } = getImageProps({ ...imageProps, src: heroImage });
+  const { props: mobile } = getImageProps({ ...imageProps, src: heroMobileImage });
   return (
     <header className="hero" id="home">
       <div className="hero-photo">
-        {/* Account for the full width of the 4:3 image covering a portrait hero. */}
-        <Image
-          src={heroImage}
-          alt={
-            pt
-              ? "Escadaria do Sichuan Restaurant com murais coloridos, lanternas e letreiros de néon"
-              : "Sichuan Restaurant stairway with colourful murals, lanterns and neon signs"
-          }
-          fill
-          priority
-          placeholder="blur"
-          sizes="(max-width: 600px) max(100vw, clamp(800px, 133.333svh, 987px)), 100vw"
-        />
+        <picture>
+          <source media="(max-width: 850px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+          <img {...desktop} alt={imageProps.alt} />
+        </picture>
         <div className="hero-photo-shade" />
       </div>
       <div className="hero-inner container">

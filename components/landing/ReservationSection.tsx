@@ -37,7 +37,6 @@ export function ReservationSection() {
                   return <div key={hours.en}><dt>{meal}</dt><dd>{time}</dd></div>;
                 })}
               </dl>
-              <p className="hours-note">{pt ? "Confirme os dias de abertura por telefone." : "Please call to confirm opening days."}</p>
             </div>
           </div>
           <div className="contact-row">

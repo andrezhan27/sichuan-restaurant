@@ -1,8 +1,10 @@
 import { menuImages } from "@/data/menu";
 import type { LocalizedText } from "@/data/translations";
-import heroPhoto from "@/public/restaurant/sichuan-hero.webp";
+import heroPhoto from "@/public/restaurant/sichuan-hero-desktop.webp";
+import heroMobilePhoto from "@/public/restaurant/sichuan-hero-mobile.webp";
 
 export const heroImage = heroPhoto;
+export const heroMobileImage = heroMobilePhoto;
 export const dishes = menuImages;
 export const ambienceImages: { src: string; alt: LocalizedText; objectPosition?: string }[] = [
   {
