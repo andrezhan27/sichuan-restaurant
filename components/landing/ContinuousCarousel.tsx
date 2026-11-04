@@ -22,8 +22,13 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
   const groupRef = useRef<HTMLDivElement>(null);
   const position = useRef(0);
   const cycle = useRef(0);
-  const pointer = useRef<{ input: "pointer" | "touch"; id: number; startX: number; startY: number; lastX: number; dragged: boolean } | null>(null);
+  const pointer = useRef<{ input: "pointer" | "touch"; id: number; startX: number; startY: number; lastX: number; dragged: boolean; samples: { x: number; time: number }[] } | null>(null);
   const suppressClick = useRef(false);
+  const momentum = useRef<number | null>(null);
+
+  const paint = useCallback(() => {
+    if (trackRef.current) trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
+  }, []);
 
   const move = useCallback((distance: number) => {
     if (!trackRef.current || !cycle.current) return;
@@ -31,17 +36,31 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
     position.current = cycle.current + ((position.current + distance) % cycle.current + cycle.current) % cycle.current;
   }, []);
 
-  const releasePointer = useCallback(() => {
+  const releasePointer = useCallback((coast = false) => {
     const active = pointer.current;
     if (!active) return;
+    momentum.current = null;
+    if (coast && active.dragged && !reducedMotion) {
+      const last = active.samples[active.samples.length - 1];
+      const first = active.samples[0];
+      const elapsed = last.time - first.time;
+      // Holding still before release should not fling using an old swipe speed.
+      const velocity = performance.now() - last.time <= 80 && elapsed > 0
+        ? ((first.x - last.x) / elapsed) * 1000
+        : 0;
+      momentum.current = Math.max(-3000, Math.min(3000, velocity));
+    }
     suppressClick.current = active.dragged;
     pointer.current = null;
     if (active.input === "pointer" && viewportRef.current?.hasPointerCapture(active.id)) viewportRef.current.releasePointerCapture(active.id);
-  }, []);
+  }, [reducedMotion]);
 
   const dragTo = useCallback((x: number, y: number) => {
     const active = pointer.current;
     if (!active) return false;
+    const time = performance.now();
+    active.samples.push({ x, time });
+    while (active.samples.length > 2 && active.samples[1].time < time - 80) active.samples.shift();
     if (!active.dragged) {
       const dx = Math.abs(x - active.startX);
       const dy = Math.abs(y - active.startY);
@@ -50,13 +69,16 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
         releasePointer();
         return false;
       }
-      if (dx < 6 || dx < dy) return false;
+      if (dx < 3 || dx < dy) return false;
       active.dragged = true;
     }
     move(active.lastX - x);
     active.lastX = x;
+    // Paint directly from input: no easing or extra animation-frame delay under
+    // the finger. Momentum only applies once the gesture has ended.
+    paint();
     return true;
-  }, [move, releasePointer]);
+  }, [move, paint, releasePointer]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -70,7 +92,8 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
       }
       const touch = event.touches[0];
       suppressClick.current = false;
-      pointer.current = { input: "touch", id: touch.identifier, startX: touch.clientX, startY: touch.clientY, lastX: touch.clientX, dragged: false };
+      momentum.current = null;
+      pointer.current = { input: "touch", id: touch.identifier, startX: touch.clientX, startY: touch.clientY, lastX: touch.clientX, dragged: false, samples: [{ x: touch.clientX, time: performance.now() }] };
     };
     const drag = (event: TouchEvent) => {
       const active = pointer.current;
@@ -83,7 +106,7 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
       if (touch && dragTo(touch.clientX, touch.clientY) && event.cancelable) event.preventDefault();
     };
     const end = (event: TouchEvent) => {
-      if (pointer.current?.input === "touch" && Array.from(event.changedTouches).some(touch => touch.identifier === pointer.current?.id)) releasePointer();
+      if (pointer.current?.input === "touch" && Array.from(event.changedTouches).some(touch => touch.identifier === pointer.current?.id)) releasePointer(event.type === "touchend");
     };
     viewport.addEventListener("touchstart", start, { passive: true });
     viewport.addEventListener("touchmove", drag, { passive: false });
@@ -99,15 +122,16 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
 
   useEffect(() => {
     const release = (event: PointerEvent) => {
-      if (pointer.current?.input === "pointer" && event.pointerId === pointer.current.id) releasePointer();
+      if (pointer.current?.input === "pointer" && event.pointerId === pointer.current.id) releasePointer(event.type === "pointerup");
     };
+    const cancel = () => releasePointer();
     window.addEventListener("pointerup", release);
     window.addEventListener("pointercancel", release);
-    window.addEventListener("blur", releasePointer);
+    window.addEventListener("blur", cancel);
     return () => {
       window.removeEventListener("pointerup", release);
       window.removeEventListener("pointercancel", release);
-      window.removeEventListener("blur", releasePointer);
+      window.removeEventListener("blur", cancel);
     };
   }, [releasePointer]);
 
@@ -123,7 +147,7 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
         : width;
       cycle.current = width;
       move(0);
-      if (trackRef.current) trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
+      paint();
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -141,10 +165,22 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
     const tick = (time: number) => {
       const delta = previous ? Math.min(time - previous, 50) : 0;
       previous = time;
-      if (!paused && !pointer.current && !document.hidden) move((delta / 1000) * speed);
-      // Paint once per display frame, including while dragging. Input events only
-      // update the position so high-frequency touch events never compete to paint.
-      if (trackRef.current) trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
+      if (!pointer.current && !document.hidden) {
+        const seconds = delta / 1000;
+        const target = paused ? 0 : speed;
+        if (momentum.current !== null && !reducedMotion) {
+          // Integrate exponential friction, independent of the display refresh
+          // rate. Swipes in either direction ease into the normal sliding speed.
+          const decay = Math.exp(-seconds / 0.325);
+          const difference = momentum.current - target;
+          move(target * seconds + difference * 0.325 * (1 - decay));
+          momentum.current = target + difference * decay;
+          if (Math.abs(momentum.current - target) < 0.5) momentum.current = null;
+        } else if (!paused) {
+          move(seconds * speed);
+        }
+        paint();
+      }
       frame = requestAnimationFrame(tick);
     };
     // Start with a fresh clock after returning from a background tab.
@@ -157,7 +193,7 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
       viewport.removeEventListener("wheel", wheel);
       document.removeEventListener("visibilitychange", resetClock);
     };
-  }, [paused, speed, move]);
+  }, [paused, speed, move, paint, reducedMotion]);
 
   return (
     <div className={`carousel ${className}`}>
@@ -165,7 +201,8 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
         onPointerDown={(event) => {
           if (event.pointerType === "touch" || !event.isPrimary || event.button !== 0) return;
           suppressClick.current = false;
-          pointer.current = { input: "pointer", id: event.pointerId, startX: event.clientX, startY: event.clientY, lastX: event.clientX, dragged: false };
+          momentum.current = null;
+          pointer.current = { input: "pointer", id: event.pointerId, startX: event.clientX, startY: event.clientY, lastX: event.clientX, dragged: false, samples: [{ x: event.clientX, time: performance.now() }] };
         }}
         onPointerMove={(event) => {
           const active = pointer.current;
@@ -174,7 +211,7 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
             event.currentTarget.setPointerCapture(event.pointerId);
           }
         }}
-        onPointerUp={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
+        onPointerUp={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(true); }}
         onPointerCancel={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
         onLostPointerCapture={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
         onDragStart={(event) => event.preventDefault()}
