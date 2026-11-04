@@ -3,7 +3,6 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { dishes } from "@/data/landing";
 import { localize, translations } from "@/data/translations";
 import Image from "next/image";
-import Link from "next/link";
 import { ContinuousCarousel } from "./ContinuousCarousel";
 
 export function CulinarySignatures() {
@@ -21,17 +20,14 @@ export function CulinarySignatures() {
           </div>
           <div className="section-heading-aside">
             <p>{t.intro}</p>
-            <Link className="text-link" href="/menu">
-              {t.cta}
-            </Link>
           </div>
         </div>
       </div>
-      <ContinuousCarousel label={t.title} className="specialties-carousel" showControls={false} renderItems={(duplicate) => (
+      <ContinuousCarousel label={t.title} className="specialties-carousel" showControls={false} renderItems={() => (
         <>
           {dishes.map((dish, index) => (
             <article className="dish-card" key={dish.src}>
-              <Link href="/menu" className="dish-image" tabIndex={duplicate ? -1 : undefined}>
+              <div className="dish-image">
                 <Image
                   alt={localize(dish.alt, language)}
                   src={dish.src}
@@ -39,10 +35,7 @@ export function CulinarySignatures() {
                   sizes="(min-width: 850px) 380px, 78vw"
                 />
                 <span className="dish-number">0{index + 1}</span>
-                <span className="sr-only">
-                  {localize(dish.title, language)}
-                </span>
-              </Link>
+              </div>
               <h3>{localize(dish.title, language)}</h3>
               <p>{localize(dish.description, language)}</p>
             </article>

@@ -42,7 +42,7 @@ export function Hero() {
               : "The warmth of chilli. The fragrance of peppercorns. The flavours of Sichuan, at your table in Lisbon."}
           </p>
           <div className="hero-buttons">
-            <Link className="button button-outline" href="/menu">
+            <Link className="button button-outline" href="/#menu">
               {pt ? "Descobrir o menu" : "Discover the menu"}
               <ArrowRight size={17} />
             </Link>

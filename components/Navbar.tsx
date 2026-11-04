@@ -54,7 +54,7 @@ export function Navbar() {
   }, [isOpen]);
   const links = [
     { href: "/", label: t.home },
-    { href: "/menu", label: t.menu },
+    { href: "/#menu", label: t.menu },
     { href: "/#space", label: language === "pt" ? "O espaço" : "The space" },
     { href: "/#contacts", label: t.contacts },
   ];

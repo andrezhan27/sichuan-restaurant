@@ -16,7 +16,7 @@ export function FooterClient({ legalLinks }: { legalLinks: LegalLinks }) {
           <Brand />
           <p>{t.tagline}</p>
           <nav aria-label={t.navigation}>
-            <Link href="/menu">{t.menu}</Link>
+            <Link href="/#menu">{t.menu}</Link>
             <Link href="/#contacts">{t.contacts}</Link>
             <a href={restaurantInfo.phoneUrl}>{t.book}</a>
           </nav>

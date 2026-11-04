@@ -22,15 +22,13 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
   const groupRef = useRef<HTMLDivElement>(null);
   const position = useRef(0);
   const cycle = useRef(0);
-  const pointer = useRef<{ id: number; startX: number; startY: number; lastX: number; dragged: boolean } | null>(null);
+  const pointer = useRef<{ input: "pointer" | "touch"; id: number; startX: number; startY: number; lastX: number; dragged: boolean } | null>(null);
   const suppressClick = useRef(false);
 
   const move = useCallback((distance: number) => {
     if (!trackRef.current || !cycle.current) return;
     // Keep an identical copy on either side, including when dragging backwards.
     position.current = cycle.current + ((position.current + distance) % cycle.current + cycle.current) % cycle.current;
-    // Fractional transforms avoid scroll-position rounding on mobile browsers.
-    trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
   }, []);
 
   const releasePointer = useCallback(() => {
@@ -38,12 +36,70 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
     if (!active) return;
     suppressClick.current = active.dragged;
     pointer.current = null;
-    if (viewportRef.current?.hasPointerCapture(active.id)) viewportRef.current.releasePointerCapture(active.id);
+    if (active.input === "pointer" && viewportRef.current?.hasPointerCapture(active.id)) viewportRef.current.releasePointerCapture(active.id);
   }, []);
+
+  const dragTo = useCallback((x: number, y: number) => {
+    const active = pointer.current;
+    if (!active) return false;
+    if (!active.dragged) {
+      const dx = Math.abs(x - active.startX);
+      const dy = Math.abs(y - active.startY);
+      // Give slightly diagonal swipes time to resolve before yielding to page scroll.
+      if (dy >= 10 && dy > dx * 1.25) {
+        releasePointer();
+        return false;
+      }
+      if (dx < 6 || dx < dy) return false;
+      active.dragged = true;
+    }
+    move(active.lastX - x);
+    active.lastX = x;
+    return true;
+  }, [move, releasePointer]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    // A non-passive native listener can claim a horizontal swipe on iOS.
+    // Touch gestures use this path exclusively, avoiding competing pointer events.
+    const start = (event: TouchEvent) => {
+      if (event.touches.length !== 1) {
+        releasePointer();
+        return;
+      }
+      const touch = event.touches[0];
+      suppressClick.current = false;
+      pointer.current = { input: "touch", id: touch.identifier, startX: touch.clientX, startY: touch.clientY, lastX: touch.clientX, dragged: false };
+    };
+    const drag = (event: TouchEvent) => {
+      const active = pointer.current;
+      if (active?.input !== "touch") return;
+      if (event.touches.length !== 1) {
+        releasePointer();
+        return;
+      }
+      const touch = Array.from(event.touches).find(item => item.identifier === active.id);
+      if (touch && dragTo(touch.clientX, touch.clientY) && event.cancelable) event.preventDefault();
+    };
+    const end = (event: TouchEvent) => {
+      if (pointer.current?.input === "touch" && Array.from(event.changedTouches).some(touch => touch.identifier === pointer.current?.id)) releasePointer();
+    };
+    viewport.addEventListener("touchstart", start, { passive: true });
+    viewport.addEventListener("touchmove", drag, { passive: false });
+    viewport.addEventListener("touchend", end);
+    viewport.addEventListener("touchcancel", end);
+    return () => {
+      viewport.removeEventListener("touchstart", start);
+      viewport.removeEventListener("touchmove", drag);
+      viewport.removeEventListener("touchend", end);
+      viewport.removeEventListener("touchcancel", end);
+    };
+  }, [dragTo, releasePointer]);
 
   useEffect(() => {
     const release = (event: PointerEvent) => {
-      if (event.pointerId === pointer.current?.id) releasePointer();
+      if (pointer.current?.input === "pointer" && event.pointerId === pointer.current.id) releasePointer();
     };
     window.addEventListener("pointerup", release);
     window.addEventListener("pointercancel", release);
@@ -67,6 +123,7 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
         : width;
       cycle.current = width;
       move(0);
+      if (trackRef.current) trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -85,6 +142,9 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
       const delta = previous ? Math.min(time - previous, 50) : 0;
       previous = time;
       if (!paused && !pointer.current && !document.hidden) move((delta / 1000) * speed);
+      // Paint once per display frame, including while dragging. Input events only
+      // update the position so high-frequency touch events never compete to paint.
+      if (trackRef.current) trackRef.current.style.transform = `translate3d(${-position.current}px, 0, 0)`;
       frame = requestAnimationFrame(tick);
     };
     // Start with a fresh clock after returning from a background tab.
@@ -103,28 +163,20 @@ export function ContinuousCarousel({ label, renderItems, className = "", speed =
     <div className={`carousel ${className}`}>
       <div ref={viewportRef} className="carousel-viewport" role="region" aria-roledescription="carousel" aria-label={label} tabIndex={0}
         onPointerDown={(event) => {
-          if (!event.isPrimary || event.button !== 0) return;
+          if (event.pointerType === "touch" || !event.isPrimary || event.button !== 0) return;
           suppressClick.current = false;
-          pointer.current = { id: event.pointerId, startX: event.clientX, startY: event.clientY, lastX: event.clientX, dragged: false };
+          pointer.current = { input: "pointer", id: event.pointerId, startX: event.clientX, startY: event.clientY, lastX: event.clientX, dragged: false };
         }}
         onPointerMove={(event) => {
           const active = pointer.current;
-          if (!active || active.id !== event.pointerId) return;
-          if (!active.dragged) {
-            const dx = Math.abs(event.clientX - active.startX);
-            const dy = Math.abs(event.clientY - active.startY);
-            if (dy > dx && dy >= 5) {
-              releasePointer();
-              return;
-            }
-            if (dx < 5) return;
+          if (active?.input !== "pointer" || active.id !== event.pointerId) return;
+          if (dragTo(event.clientX, event.clientY) && !event.currentTarget.hasPointerCapture(event.pointerId)) {
             event.currentTarget.setPointerCapture(event.pointerId);
           }
-          active.dragged = true;
-          move(active.lastX - event.clientX);
-          active.lastX = event.clientX;
         }}
-        onPointerUp={releasePointer} onPointerCancel={releasePointer} onLostPointerCapture={releasePointer}
+        onPointerUp={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
+        onPointerCancel={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
+        onLostPointerCapture={(event) => { if (pointer.current?.input === "pointer" && pointer.current.id === event.pointerId) releasePointer(); }}
         onDragStart={(event) => event.preventDefault()}
         onClickCapture={(event) => {
           if (suppressClick.current) {

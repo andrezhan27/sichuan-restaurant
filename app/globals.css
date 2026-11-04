@@ -176,11 +176,14 @@ h2 {
   overscroll-behavior-x: contain;
   cursor: grab;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   overflow-anchor: none;
 }
 .carousel-viewport:active { cursor: grabbing; }
 .carousel-track, .carousel-group { display: flex; width: max-content; }
 .carousel-track { will-change: transform; }
+.carousel-track img { -webkit-user-drag: none; }
 .carousel-group { gap: var(--carousel-gap); padding-right: var(--carousel-gap); }
 .specialties-carousel .dish-card { width: clamp(290px, 29vw, 380px); flex: none; padding-bottom: 5px; }
 .specialties-carousel .dish-image { border-radius: 3px; }
@@ -260,13 +263,10 @@ h2 {
 .footer-bottom nav { display: flex; flex-wrap: wrap; gap: 20px; }
 .footer-credit { white-space: nowrap; }
 .footer-credit span { color: var(--gold); font-weight: 700; }
-.menu-page { padding: 80px 0 100px; }
 .page-heading { max-width: 740px; margin-bottom: 55px; }
 .page-heading h1 { font-family: var(--serif); font-size: clamp(56px, 7vw, 94px); font-weight: 400; line-height: 1; letter-spacing: -.03em; margin: 25px 0; }
 .page-heading > p:not(.eyebrow) { color: var(--muted); font-size: 13px; max-width: 600px; }
 .page-heading .hero-buttons { margin-top: 25px; }
-.menu-grid { row-gap: 45px; }
-.menu-note { color: var(--muted); border-top: 1px solid var(--line); margin-top: 50px; padding-top: 25px; font-size: 11px; }
 .booking-page { min-height: 78vh; display: grid; grid-template-columns: 1fr 1fr; }
 .booking-content { padding: 80px max(45px, calc((100vw - 1208px) / 2)); padding-right: 60px; align-self: center; }
 .booking-content h1 { font: 400 clamp(50px, 5vw, 76px)/1 var(--serif); margin: 25px 0; }
@@ -381,7 +381,6 @@ h2 {
   .footer-top > p { max-width: 300px; }
   .footer-top nav { gap: 24px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 15px; font-size: 9px; }
-  .menu-page { padding-top: 55px; }
   .page-heading { margin-bottom: 35px; }
   .booking-page { grid-template-columns: 1fr; }
   .booking-content { padding: 55px 22px; }
