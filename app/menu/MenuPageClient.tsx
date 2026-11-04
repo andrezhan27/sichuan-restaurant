@@ -3,7 +3,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { Navbar } from "@/components/Navbar";
 import { menuImages } from "@/data/menu";
 import { localize, translations } from "@/data/translations";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,15 +26,6 @@ export function MenuPageClient() {
             </h1>
             <p>{t.intro}</p>
             <div className="hero-buttons">
-              <a
-                className="button"
-                href="/restaurant/menu.webp"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t.fullMenu}
-                <ArrowUpRight size={16} />
-              </a>
               <Link className="text-link" href="/">
                 <ArrowLeft size={16} />
                 {t.backHome}
@@ -61,8 +52,8 @@ export function MenuPageClient() {
           </div>
           <p className="menu-note">
             {language === "pt"
-              ? "Fotografias do restaurante. O menu fotografado pode não refletir a oferta e os preços atuais. Informe a equipa sobre alergias ou restrições alimentares antes de pedir."
-              : "Photographs from the restaurant. The photographed menu may not reflect current availability and prices. Please tell our team about any allergies or dietary requirements before ordering."}
+              ? "Fotografias do restaurante. Confirme a oferta e os preços atuais com a nossa equipa. Informe a equipa sobre alergias ou restrições alimentares antes de pedir."
+              : "Photographs from the restaurant. Confirm current availability and prices with our team. Please tell our team about any allergies or dietary requirements before ordering."}
           </p>
         </div>
       </main>

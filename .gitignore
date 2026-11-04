@@ -29,3 +29,6 @@ coverage/
 .DS_Store
 *.pem
 *.tsbuildinfo
+
+# Retired oversized menu download
+/public/menu/the-old-house-menu-2025.pdf

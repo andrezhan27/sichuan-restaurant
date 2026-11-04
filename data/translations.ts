@@ -94,10 +94,6 @@ const copy = {
       en: "Back to home",
       pt: "Voltar ao início",
     },
-    fullMenu: {
-      en: "View menu photograph",
-      pt: "Ver fotografia do menu",
-    },
     highlights: {
       en: "Menu Highlights",
       pt: "Destaques do Menu",

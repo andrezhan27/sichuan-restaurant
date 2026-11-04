@@ -8,7 +8,6 @@ export type MenuImage = {
 };
 
 // Menu images supplied by the user on 2026-11-02.
-// Original filenames are recorded in public/restaurant/SOURCES.md.
 export const menuImages: MenuImage[] = [
   {
     src: "/restaurant/menu-sichuan-noodles.webp",
